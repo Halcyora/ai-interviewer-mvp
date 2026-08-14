@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — AI Interviewer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>&#9881; Admin Panel</h1>
+      <a href="/" class="admin-link">&#8592; Back to Interview</a>
+    </header>
+
+    <!-- ── Existing Contexts ───────────────────────────────────── -->
+    <section id="contexts-section">
+      <h2>Ingested Contexts</h2>
+      <div id="contexts-list"><p class="muted">Loading...</p></div>
+    </section>
+
+    <!-- ── Upload Document ────────────────────────────────────── -->
+    <section>
+      <h2>Upload Context Document</h2>
+      <p class="muted">Supported: .pdf, .docx, .txt — will be chunked and embedded automatically.</p>
+      <div class="form-row">
+        <input type="file" id="file-input" accept=".pdf,.docx,.txt">
+        <button id="upload-btn" class="btn-primary" onclick="uploadFile()">Upload &amp; Ingest</button>
+      </div>
+      <div id="upload-status" class="status-box" hidden></div>
+    </section>
+
+    <!-- ── Generate Questions ─────────────────────────────────── -->
+    <section>
+      <h2>Generate Questions</h2>
+      <p class="muted">Select an ingested context — Claude Sonnet will read the chunks and write a questions file.</p>
+      <div class="form-row">
+        <select id="gen-context-select" class="context-select">
+          <option value="">Select context...</option>
+        </select>
+        <label for="num-topics">Topics:</label>
+        <input type="number" id="num-topics" value="5" min="1" max="20" style="width:60px">
+        <button id="gen-btn" class="btn-primary" onclick="generateQuestions()">Generate</button>
+      </div>
+      <div id="gen-status" class="status-box" hidden></div>
+      <div id="gen-results" hidden>
+        <h2>Generated Questions</h2>
+        <div id="topics-preview"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/admin.js"></script>
+</body>
+</html>

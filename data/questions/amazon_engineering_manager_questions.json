@@ -1,0 +1,486 @@
+{
+  "company": "amazon",
+  "role": "engineering_manager",
+  "questions": [
+    {
+      "id": "q_001",
+      "text": "Explain the fundamentals of Data Structures. How does it work in Amazon?",
+      "difficulty": "beginner",
+      "topic": "Data Structures",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_002",
+      "text": "What are the key concepts of Algorithms and why are they important for Engineering Manager?",
+      "difficulty": "beginner",
+      "topic": "Algorithms",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_003",
+      "text": "Describe the basic approach to solving a Time Complexity problem in Amazon interviews.",
+      "difficulty": "beginner",
+      "topic": "Time Complexity",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_004",
+      "text": "What is the difference between Implementation and related concepts? Which is better and when?",
+      "difficulty": "beginner",
+      "topic": "Implementation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_005",
+      "text": "Walk through a simple example of Debugging application in real systems.",
+      "difficulty": "beginner",
+      "topic": "Debugging",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_006",
+      "text": "What are the common mistakes developers make when working with Data Structures?",
+      "difficulty": "beginner",
+      "topic": "Data Structures",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_007",
+      "text": "How would you explain Algorithms to someone new to engineering?",
+      "difficulty": "beginner",
+      "topic": "Algorithms",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_008",
+      "text": "List three important properties of Time Complexity and explain each one.",
+      "difficulty": "beginner",
+      "topic": "Time Complexity",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_009",
+      "text": "What tools or libraries does Amazon use for Implementation?",
+      "difficulty": "beginner",
+      "topic": "Implementation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_010",
+      "text": "Describe how Debugging scales with data size. What are the limits?",
+      "difficulty": "beginner",
+      "topic": "Debugging",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_011",
+      "text": "What prerequisites do you need to understand Data Structures?",
+      "difficulty": "beginner",
+      "topic": "Data Structures",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_012",
+      "text": "How does Algorithms relate to other Amazon technologies?",
+      "difficulty": "beginner",
+      "topic": "Algorithms",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_013",
+      "text": "Explain a real-world scenario where Time Complexity is essential.",
+      "difficulty": "beginner",
+      "topic": "Time Complexity",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_014",
+      "text": "What would happen if you ignored best practices for Implementation?",
+      "difficulty": "beginner",
+      "topic": "Implementation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_015",
+      "text": "Describe the evolution of Debugging over the last 5 years.",
+      "difficulty": "beginner",
+      "topic": "Debugging",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_016",
+      "text": "How would you validate your understanding of Data Structures?",
+      "difficulty": "beginner",
+      "topic": "Data Structures",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_017",
+      "text": "List common patterns developers use when implementing Algorithms.",
+      "difficulty": "beginner",
+      "topic": "Algorithms",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_018",
+      "text": "Why might Time Complexity be asked in a Amazon interview for Engineering Manager?",
+      "difficulty": "beginner",
+      "topic": "Time Complexity",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_019",
+      "text": "What is the most important concept to master in Implementation?",
+      "difficulty": "beginner",
+      "topic": "Implementation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_020",
+      "text": "How does Debugging differ across programming languages?",
+      "difficulty": "beginner",
+      "topic": "Debugging",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_021",
+      "text": "Design a system that leverages System Design to solve auto-complete.",
+      "difficulty": "intermediate",
+      "topic": "System Design",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_022",
+      "text": "How would you design using Optimization? Discuss trade-offs.",
+      "difficulty": "intermediate",
+      "topic": "Optimization",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_023",
+      "text": "Compare different approaches to Architecture and justify your choice.",
+      "difficulty": "intermediate",
+      "topic": "Architecture",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_024",
+      "text": "Walk through your thought process for Trade-offs in a production scenario.",
+      "difficulty": "intermediate",
+      "topic": "Trade-offs",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_025",
+      "text": "Design an efficient solution for complex problem using Scalability.",
+      "difficulty": "intermediate",
+      "topic": "Scalability",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_026",
+      "text": "How would you optimize System Design for latency?",
+      "difficulty": "intermediate",
+      "topic": "System Design",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_027",
+      "text": "Explain how you would teach Optimization to a junior engineer.",
+      "difficulty": "intermediate",
+      "topic": "Optimization",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_028",
+      "text": "Design an API for Architecture that scales to million users.",
+      "difficulty": "intermediate",
+      "topic": "Architecture",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_029",
+      "text": "What are the edge cases in complex problem? How do you handle them?",
+      "difficulty": "intermediate",
+      "topic": "Trade-offs",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_030",
+      "text": "Describe how Amazon might implement Scalability at scale.",
+      "difficulty": "intermediate",
+      "topic": "Scalability",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_031",
+      "text": "Compare System Design with alternatives. When is each appropriate?",
+      "difficulty": "intermediate",
+      "topic": "System Design",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_032",
+      "text": "How would you debug a complex problem related to Optimization?",
+      "difficulty": "intermediate",
+      "topic": "Optimization",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_033",
+      "text": "Design an interview question for Architecture at senior level.",
+      "difficulty": "intermediate",
+      "topic": "Architecture",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_034",
+      "text": "Architect a solution combining Service A and Service B.",
+      "difficulty": "intermediate",
+      "topic": "Trade-offs",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_035",
+      "text": "How would you migrate from one Scalability approach to another?",
+      "difficulty": "intermediate",
+      "topic": "Scalability",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_036",
+      "text": "Describe a system that uses System Design creatively.",
+      "difficulty": "intermediate",
+      "topic": "System Design",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_037",
+      "text": "What does Amazon optimize for regarding Optimization?",
+      "difficulty": "intermediate",
+      "topic": "Optimization",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_038",
+      "text": "How would you test code that uses Architecture?",
+      "difficulty": "intermediate",
+      "topic": "Architecture",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_039",
+      "text": "Design a monitoring system for Trade-offs performance.",
+      "difficulty": "intermediate",
+      "topic": "Trade-offs",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_040",
+      "text": "Explain the trade-offs between simplicity and optimization for Scalability.",
+      "difficulty": "intermediate",
+      "topic": "Scalability",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_041",
+      "text": "Architect a globally distributed system for global consistency using Distributed Systems.",
+      "difficulty": "advanced",
+      "topic": "Distributed Systems",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_042",
+      "text": "Design a highly available and fault-tolerant System leveraging Global Scale.",
+      "difficulty": "advanced",
+      "topic": "Global Scale",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_043",
+      "text": "How would you implement distributed problem at million users using Resilience?",
+      "difficulty": "advanced",
+      "topic": "Resilience",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_044",
+      "text": "Design a system that maintains ACID properties while using Innovation.",
+      "difficulty": "advanced",
+      "topic": "Innovation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_045",
+      "text": "Describe how you would scale System to handle 10x growth using Performance.",
+      "difficulty": "advanced",
+      "topic": "Performance",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_046",
+      "text": "How would you solve the consistency in a distributed Distributed Systems system?",
+      "difficulty": "advanced",
+      "topic": "Distributed Systems",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_047",
+      "text": "Design a multi-region System that uses Global Scale efficiently.",
+      "difficulty": "advanced",
+      "topic": "Global Scale",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_048",
+      "text": "How would you achieve efficiency while minimizing operational costs in Resilience?",
+      "difficulty": "advanced",
+      "topic": "Resilience",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_049",
+      "text": "Architect a resilient System that uses Innovation with automatic failover.",
+      "difficulty": "advanced",
+      "topic": "Innovation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_050",
+      "text": "Design a Performance system that handles Byzantine failures.",
+      "difficulty": "advanced",
+      "topic": "Performance",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_051",
+      "text": "How would you implement real-time real-time collaboration using Distributed Systems?",
+      "difficulty": "advanced",
+      "topic": "Distributed Systems",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_052",
+      "text": "Describe a Global Scale approach that benefits while avoiding drawbacks.",
+      "difficulty": "advanced",
+      "topic": "Global Scale",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_053",
+      "text": "How would you benchmark and optimize Resilience performance at scale?",
+      "difficulty": "advanced",
+      "topic": "Resilience",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_054",
+      "text": "Design a Innovation system supporting millions of users with strict SLA.",
+      "difficulty": "advanced",
+      "topic": "Innovation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_055",
+      "text": "How would you migrate petabytes of data using Performance?",
+      "difficulty": "advanced",
+      "topic": "Performance",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_056",
+      "text": "Describe how Amazon likely implemented Distributed Systems internally.",
+      "difficulty": "advanced",
+      "topic": "Distributed Systems",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_057",
+      "text": "How would you ensure ACID properties in a Global Scale system across multiple continents?",
+      "difficulty": "advanced",
+      "topic": "Global Scale",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_058",
+      "text": "Design a Resilience system handling network partition without data loss.",
+      "difficulty": "advanced",
+      "topic": "Resilience",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_059",
+      "text": "What recent advances in Innovation could improve Amazon's systems?",
+      "difficulty": "advanced",
+      "topic": "Innovation",
+      "company": "amazon",
+      "role": "engineering_manager"
+    },
+    {
+      "id": "q_060",
+      "text": "How would you design a Performance system for extreme throughput requirements?",
+      "difficulty": "advanced",
+      "topic": "Performance",
+      "company": "amazon",
+      "role": "engineering_manager"
+    }
+  ]
+}

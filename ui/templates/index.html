@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Interviewer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>AI Interviewer</h1>
+      <div id="header-right">
+        <div id="progress-container">
+          <div id="progress-bar"><div id="progress-fill"></div></div>
+          <span id="progress-label">0 / 0 topics</span>
+        </div>
+        <a href="/admin" class="admin-link">&#9881; Admin</a>
+      </div>
+    </header>
+
+    <main>
+      <div id="badges-row">
+        <span id="topic-badge"></span>
+        <span id="stretch-badge"></span>
+      </div>
+
+      <section id="question-section">
+        <p id="question-text">Select a context below and press <strong>Start Interview</strong>.</p>
+      </section>
+
+      <section id="answer-section" hidden>
+        <textarea id="text-answer" rows="6" placeholder="Type your answer here..."></textarea>
+        <div id="audio-row">
+          <button id="mic-btn" class="btn-secondary">&#127908; Hold to Speak</button>
+          <span id="live-transcript"></span>
+        </div>
+        <button id="submit-btn" class="btn-primary">Submit Answer</button>
+      </section>
+
+      <section id="feedback-section" hidden>
+        <div id="score-bar-wrapper">
+          <span>Confidence:</span>
+          <div id="score-bar"><div id="score-fill"></div></div>
+          <span id="score-pct">0%</span>
+        </div>
+        <p id="reasoning-text"></p>
+      </section>
+    </main>
+
+    <footer>
+      <div id="start-row">
+        <select id="context-select" class="context-select">
+          <option value="">Loading contexts...</option>
+        </select>
+        <button id="start-btn" class="btn-primary">Start Interview</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
