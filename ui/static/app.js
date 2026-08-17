@@ -5,8 +5,33 @@ let ws = null;
 let mediaRecorder = null;
 let isInterviewActive = false;
 let lockedDifficulty = "";
+let submitRequestToken = 0;
 
 const $ = id => document.getElementById(id);
+
+const REQUEST_TIMEOUT_MS = 20000;
+
+async function fetchWithTimeout(url, options = {}, timeoutMs = REQUEST_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+async function parseErrorMessage(res, fallbackMessage) {
+  try {
+    const payload = await res.json();
+    if (payload && typeof payload.detail === "string" && payload.detail.trim()) {
+      return payload.detail;
+    }
+  } catch (_) {
+    // Non-JSON error bodies are common for 5xx responses; use fallback message.
+  }
+  return fallbackMessage;
+}
 
 function setInterviewActive(active, difficulty = "") {
   isInterviewActive = active;
@@ -83,6 +108,8 @@ function resetToMainPage() {
   }
 
   sessionId = null;
+  // Invalidate in-flight submit responses so they cannot repopulate UI after leaving.
+  submitRequestToken += 1;
   currentTurnIndex = 0;
   totalTopics = 0;
   setInterviewActive(false);
@@ -165,27 +192,45 @@ function updateProgress(done, total) {
 async function submitTextAnswer() {
   const answer = $("text-answer").value.trim();
   if (!answer) return;
+  const requestSessionId = sessionId;
+  const requestToken = ++submitRequestToken;
   $("submit-btn").disabled = true;
-  const res = await fetch("/interview/answer", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      session_id: sessionId,
-      turn_index: currentTurnIndex,
-      answer_text: answer,
-      answer_mode: "TEXT",
-    }),
-  });
-  
-  if (!res.ok) {
-    const error = await res.json();
-    alert(`Error: ${error.detail || "Failed to submit answer"}`);
-    $("submit-btn").disabled = false;
-    return;
+  try {
+    const res = await fetchWithTimeout("/interview/answer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        session_id: sessionId,
+        turn_index: currentTurnIndex,
+        answer_text: answer,
+        answer_mode: "TEXT",
+      }),
+    });
+
+    if (!res.ok) {
+      const message = await parseErrorMessage(res, "Failed to submit answer");
+      alert(`Error: ${message}`);
+      return;
+    }
+
+    const data = await res.json();
+    if (requestToken !== submitRequestToken || requestSessionId !== sessionId) {
+      return;
+    }
+    handleEvalResult(data);
+  } catch (e) {
+    if (e && e.name === "AbortError") {
+      alert("Submit timed out. Please try again.");
+    } else {
+      console.error("Submit answer request failed:", e);
+      alert("Submit failed due to a network or server error.");
+    }
+  } finally {
+    // If interview is still active, allow retry; completed flow keeps controls hidden.
+    if (requestToken === submitRequestToken && sessionId) {
+      $("submit-btn").disabled = false;
+    }
   }
-  
-  const data = await res.json();
-  handleEvalResult(data);
 }
 
 function handleEvalResult(data) {
@@ -217,15 +262,19 @@ async function leaveInterview() {
 
   $("leave-btn").disabled = true;
   try {
-    const res = await fetch(`/interview/leave/${sessionId}`, { method: "POST" });
+    const res = await fetchWithTimeout(`/interview/leave/${sessionId}`, { method: "POST" });
     if (!res.ok && res.status !== 404) {
-      const err = await res.json().catch(() => ({}));
-      alert(`Failed to leave interview: ${err.detail || "unknown error"}`);
+      const message = await parseErrorMessage(res, "unknown error");
+      alert(`Failed to leave interview: ${message}`);
       $("leave-btn").disabled = false;
       return;
     }
   } catch (e) {
-    console.error("Leave interview request failed:", e);
+    if (e && e.name === "AbortError") {
+      alert("Leave request timed out. Returning to main page.");
+    } else {
+      console.error("Leave interview request failed:", e);
+    }
   }
 
   resetToMainPage();

@@ -1,16 +1,39 @@
 from contextlib import asynccontextmanager
+import logging
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from db.database import init_db
 from rag.vectorstore import warmup
+from config.settings import settings
 from api.routes import interview, sessions, reports, audit as audit_router
 from api.routes import admin as admin_router
 from api.websocket import ws_router
 
 
+logger = logging.getLogger(__name__)
+
+
+def _validate_bedrock_settings() -> None:
+    """Warn when Nova models are configured without an inference profile."""
+    uses_nova = any(
+        "nova" in model_id.lower()
+        for model_id in [settings.bedrock_nova_lite_model_id, settings.bedrock_nova_pro_model_id]
+        if model_id
+    )
+    if uses_nova and not settings.bedrock_text_inference_profile_id:
+        logger.warning(
+            "BEDROCK_TEXT_INFERENCE_PROFILE_ID is not set while Nova text models are configured. "
+            "Answer evaluation may fail unless your account supports on-demand throughput for the model."
+        )
+
+    if settings.bedrock_text_inference_profile_id:
+        logger.info("Using Bedrock inference profile for text models.")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    _validate_bedrock_settings()
     await init_db()
     warmup()  # C1: pre-load ChromaDB HNSW index before first request
     yield

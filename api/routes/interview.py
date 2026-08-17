@@ -127,8 +127,15 @@ async def answer_question(body: AnswerIn, db: AsyncSession = Depends(get_db)):
     # Validate turn_index matches server state (prevent client/server drift)
     if body.turn_index != s.global_turn_index:
         raise HTTPException(400, f"Turn index mismatch: expected {s.global_turn_index}, got {body.turn_index}. Page may be out of sync.")
-    
-    return await submit_answer(body.session_id, body.answer_text, body.answer_mode, db)
+
+    try:
+        return await submit_answer(body.session_id, body.answer_text, body.answer_mode, db)
+    except Exception as exc:
+        # Keep the session usable after downstream failures (e.g., LLM provider errors).
+        active = load_session(body.session_id)
+        if active and active.state == "EVALUATING":
+            active.state = "AWAITING_ANSWER"
+        raise HTTPException(502, f"Answer evaluation failed: {exc}")
 
 
 @router.get("/status/{session_id}")

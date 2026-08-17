@@ -30,6 +30,7 @@ async def invoke_bedrock(
         Tuple of (response_text, {input_tokens, output_tokens, latency_ms})
     """
     client = get_bedrock_runtime()
+    resolved_model_id = settings.bedrock_text_inference_profile_id or model_id
     
     # Determine request format based on model provider
     if "claude" in model_id.lower():
@@ -59,12 +60,22 @@ async def invoke_bedrock(
         })
     
     t0 = time.monotonic()
-    response = client.invoke_model(
-        modelId=model_id,
-        body=body,
-        contentType="application/json",
-        accept="application/json",
-    )
+    try:
+        response = client.invoke_model(
+            modelId=resolved_model_id,
+            body=body,
+            contentType="application/json",
+            accept="application/json",
+        )
+    except Exception as exc:
+        msg = str(exc)
+        if "on-demand throughput isn\u2019t supported" in msg or "on-demand throughput isn't supported" in msg:
+            raise RuntimeError(
+                "Bedrock model invocation failed because on-demand throughput is not supported. "
+                "Set BEDROCK_TEXT_INFERENCE_PROFILE_ID in .env to an inference profile ID/ARN "
+                "that includes your configured model."
+            ) from exc
+        raise
     latency_ms = int((time.monotonic() - t0) * 1000)
     
     resp_body = json.loads(response["body"].read())

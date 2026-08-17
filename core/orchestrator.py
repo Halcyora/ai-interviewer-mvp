@@ -310,8 +310,8 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
             },
         }
 
-    # Use topic_label (legacy) or topic field (new structure)
-    label = topic.topic_label or topic.topic or topic.difficulty or "Unknown"
+    # Use a stable label fallback so DB writes and prompts always receive a non-empty value.
+    label = topic.topic_label or topic.topic or topic.difficulty or topic.topic_id or "Unknown"
 
     eval_result = await evaluate_answer(
         session_id=s.session_id, turn_id=topic.current_turn_db_id,
@@ -345,7 +345,7 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
         s.state = "FOLLOW_UP"
         follow_up_text = await generate_follow_up(
             session_id=s.session_id, turn_id=s.global_turn_index,
-            topic_label=topic.topic_label, original_question=topic.current_question,
+            topic_label=label, original_question=topic.current_question,
             candidate_answer=answer_text, confidence_score=score,
             missing_points=eval_result["missing_points"],
             context_chunks=topic.context_chunks,
@@ -386,7 +386,7 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
         topic_avg = compute_topic_score(topic.scores)
         grade = score_to_grade(topic_avg)
         await upsert_topic_score(
-            db, s.session_id, topic.topic_id, topic.topic_label,
+            db, s.session_id, topic.topic_id, label,
             len(topic.scores), topic_avg, grade,
         )
         s.current_topic_index += 1

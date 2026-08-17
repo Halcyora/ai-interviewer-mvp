@@ -36,9 +36,12 @@ Open `.env` and fill in your values:
 AWS_ACCESS_KEY_ID=your_key_here
 AWS_SECRET_ACCESS_KEY=your_secret_here
 AWS_DEFAULT_REGION=us-east-1
+BEDROCK_TEXT_INFERENCE_PROFILE_ID=your_inference_profile_id_or_arn
 ```
 
 All other values have sensible defaults and can be left as-is for the first run.
+
+Important: When using Amazon Nova models, Bedrock on-demand throughput may be unsupported for your account/region. Set `BEDROCK_TEXT_INFERENCE_PROFILE_ID` to a provisioned inference profile ID/ARN that includes your configured Nova model.
 
 ### 3. Add your context document
 
