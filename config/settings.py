@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     aws_default_region: str = "us-east-1"
     bedrock_nova_lite_model_id: str = "amazon.nova-2-lite-v1:0"
     bedrock_nova_pro_model_id: str = "amazon.nova-pro-v1:0"
+    bedrock_claude_haiku_model_id: str = "us.anthropic.claude-3-haiku-20240307-v1:0"
+    bedrock_claude_sonnet_model_id: str = "us.anthropic.claude-3-sonnet-20240229-v1:0"
     bedrock_text_inference_profile_id: Optional[str] = None
     bedrock_embed_model_id: str = "amazon.titan-embed-text-v2:0"
     chroma_persist_dir: str = "./chroma_db"

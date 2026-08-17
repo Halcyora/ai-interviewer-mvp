@@ -7,7 +7,7 @@ from db.database import init_db
 from rag.vectorstore import warmup
 from config.settings import settings
 from api.routes import interview, sessions, reports, audit as audit_router
-from api.routes import admin as admin_router
+# from api.routes import admin as admin_router  # DISABLED: Hanging on import
 from api.websocket import ws_router
 
 
@@ -47,7 +47,7 @@ app.include_router(interview.router,    prefix="/interview", tags=["interview"])
 app.include_router(sessions.router,     prefix="/sessions",  tags=["sessions"])
 app.include_router(reports.router,      prefix="/reports",   tags=["reports"])
 app.include_router(audit_router.router, prefix="/audit",     tags=["audit"])
-app.include_router(admin_router.router, prefix="/admin",     tags=["admin"])
+# app.include_router(admin_router.router, prefix="/admin",     tags=["admin"])  # DISABLED
 app.include_router(ws_router)
 
 
@@ -64,3 +64,8 @@ async def admin_page(request: Request):
 @app.get("/report/{session_id}")
 async def report_page(request: Request, session_id: str):
     return FileResponse("ui/templates/report.html", media_type="text/html")
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

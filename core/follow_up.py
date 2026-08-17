@@ -47,7 +47,7 @@ async def generate_follow_up(
         session_id=session_id,
         turn_id=turn_id,
         template_id="FOLLOW_UP_GEN",
-        model_id=settings.bedrock_nova_lite_model_id,
+        model_id=settings.bedrock_claude_haiku_model_id,
         temperature=0.7,
         max_tokens=200,
         rendered_prompt=rendered,
