@@ -17,11 +17,12 @@ async def invoke_bedrock(
     temperature: float,
 ) -> Tuple[str, Dict[str, int]]:
     """
-    Invokes Claude via AWS Bedrock and returns response text and usage metadata.
+    Invokes LLM via AWS Bedrock and returns response text and usage metadata.
+    Supports multiple model types: Anthropic Claude, Amazon Nova, etc.
 
     Args:
         prompt: The prompt to send to the model
-        model_id: Bedrock model ID (e.g., settings.bedrock_haiku_model_id)
+        model_id: Bedrock model ID (e.g., settings.bedrock_nova_lite_model_id)
         max_tokens: Maximum tokens in response
         temperature: Model temperature (0.0 to 1.0)
 
@@ -29,12 +30,33 @@ async def invoke_bedrock(
         Tuple of (response_text, {input_tokens, output_tokens, latency_ms})
     """
     client = get_bedrock_runtime()
-    body = json.dumps({
-        "anthropic_version": "bedrock-2023-05-31",
-        "max_tokens": max_tokens,
-        "temperature": temperature,
-        "messages": [{"role": "user", "content": prompt}],
-    })
+    
+    # Determine request format based on model provider
+    if "claude" in model_id.lower():
+        # Anthropic Claude format
+        body = json.dumps({
+            "anthropic_version": "bedrock-2023-05-31",
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "messages": [{"role": "user", "content": prompt}],
+        })
+    elif "nova" in model_id.lower():
+        # Amazon Nova format
+        body = json.dumps({
+            "messages": [{"role": "user", "content": [{"text": prompt}]}],
+            "inferenceConfig": {
+                "maxTokens": max_tokens,
+                "temperature": temperature,
+            }
+        })
+    else:
+        # Default to Claude format for others
+        body = json.dumps({
+            "anthropic_version": "bedrock-2023-05-31",
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "messages": [{"role": "user", "content": prompt}],
+        })
     
     t0 = time.monotonic()
     response = client.invoke_model(
@@ -46,12 +68,28 @@ async def invoke_bedrock(
     latency_ms = int((time.monotonic() - t0) * 1000)
     
     resp_body = json.loads(response["body"].read())
-    text = resp_body["content"][0]["text"]
-    usage = resp_body.get("usage", {})
+    
+    # Parse response based on model type
+    if "claude" in model_id.lower():
+        text = resp_body["content"][0]["text"]
+        usage = resp_body.get("usage", {})
+        input_tokens = usage.get("input_tokens", 0)
+        output_tokens = usage.get("output_tokens", 0)
+    elif "nova" in model_id.lower():
+        # Amazon Nova wraps content under output.message.content
+        text = resp_body["output"]["message"]["content"][0]["text"]
+        usage = resp_body.get("usage", {})
+        input_tokens = usage.get("inputTokens", 0)
+        output_tokens = usage.get("outputTokens", 0)
+    else:
+        text = resp_body["content"][0]["text"]
+        usage = resp_body.get("usage", {})
+        input_tokens = usage.get("input_tokens", 0)
+        output_tokens = usage.get("output_tokens", 0)
     
     return text, {
-        "input_tokens": usage.get("input_tokens", 0),
-        "output_tokens": usage.get("output_tokens", 0),
+        "input_tokens": input_tokens,
+        "output_tokens": output_tokens,
         "latency_ms": latency_ms,
     }
 

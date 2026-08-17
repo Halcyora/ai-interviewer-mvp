@@ -7,8 +7,8 @@ class Settings(BaseSettings):
     aws_access_key_id: str
     aws_secret_access_key: str
     aws_default_region: str = "us-east-1"
-    bedrock_haiku_model_id: str = "anthropic.claude-3-5-haiku-20241022-v1:0"
-    bedrock_sonnet_model_id: str = "anthropic.claude-3-5-sonnet-20241022-v2:0"
+    bedrock_nova_lite_model_id: str = "amazon.nova-2-lite-v1:0"
+    bedrock_nova_pro_model_id: str = "amazon.nova-pro-v1:0"
     bedrock_embed_model_id: str = "amazon.titan-embed-text-v2:0"
     chroma_persist_dir: str = "./chroma_db"
     sqlite_db_path: str = "./interview.db"

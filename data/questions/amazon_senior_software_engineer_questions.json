@@ -4,481 +4,481 @@
   "questions": [
     {
       "id": "q_001",
-      "text": "Explain the fundamentals of Data Structures. How does it work in Amazon?",
+      "text": "What qualities make a strong software engineer at Amazon?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_002",
-      "text": "What are the key concepts of Algorithms and why are they important for Senior Software Engineer?",
+      "text": "How do you approach learning new technologies at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_003",
-      "text": "Describe the basic approach to solving a Time Complexity problem in Amazon interviews.",
+      "text": "Explain your philosophy on code quality and testing at Amazon.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_004",
-      "text": "What is the difference between Implementation and related concepts? Which is better and when?",
+      "text": "How would you mentor junior engineers at Amazon?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_005",
-      "text": "Walk through a simple example of Debugging application in real systems.",
+      "text": "Describe your experience with cross-team collaboration at Amazon.",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_006",
-      "text": "What are the common mistakes developers make when working with Data Structures?",
+      "text": "What makes a good API design decision at Amazon?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_007",
-      "text": "How would you explain Algorithms to someone new to engineering?",
+      "text": "How do you balance technical debt with feature development at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_008",
-      "text": "List three important properties of Time Complexity and explain each one.",
+      "text": "Explain your approach to system design interviews and trade-offs.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_009",
-      "text": "What tools or libraries does Amazon use for Implementation?",
+      "text": "What metrics would you track for a Amazon service?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_010",
-      "text": "Describe how Debugging scales with data size. What are the limits?",
+      "text": "How do you approach debugging complex production issues?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_011",
-      "text": "What prerequisites do you need to understand Data Structures?",
+      "text": "Describe your experience with large-scale refactoring at Amazon.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_012",
-      "text": "How does Algorithms relate to other Amazon technologies?",
+      "text": "What is your approach to code reviews at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_013",
-      "text": "Explain a real-world scenario where Time Complexity is essential.",
+      "text": "How would you design a system for reliability at Amazon?",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_014",
-      "text": "What would happen if you ignored best practices for Implementation?",
+      "text": "Explain your experience with Amazon's technology stack.",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_015",
-      "text": "Describe the evolution of Debugging over the last 5 years.",
+      "text": "What makes code maintainable and why does it matter at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_016",
-      "text": "How would you validate your understanding of Data Structures?",
+      "text": "How do you approach performance optimization at Amazon?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_017",
-      "text": "List common patterns developers use when implementing Algorithms.",
+      "text": "Describe your experience with different architectural patterns.",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_018",
-      "text": "Why might Time Complexity be asked in a Amazon interview for Senior Software Engineer?",
+      "text": "What is your approach to handling legacy code at Amazon?",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_019",
-      "text": "What is the most important concept to master in Implementation?",
+      "text": "How do you ensure security in your designs at Amazon?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_020",
-      "text": "How does Debugging differ across programming languages?",
+      "text": "Explain your approach to making architectural trade-offs.",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Senior Software Engineer - Beginner",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_021",
-      "text": "Design a system that leverages System Design to solve auto-complete.",
+      "text": "How would you lead the redesign of a critical Amazon system?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_022",
-      "text": "How would you design using Optimization? Discuss trade-offs.",
+      "text": "Design an architecture for a new high-impact Amazon product.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_023",
-      "text": "Compare different approaches to Architecture and justify your choice.",
+      "text": "How do you balance innovation with stability at Amazon scale?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_024",
-      "text": "Walk through your thought process for Trade-offs in a production scenario.",
+      "text": "Explain your approach to leading technical initiatives at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_025",
-      "text": "Design an efficient solution for complex problem using Scalability.",
+      "text": "How would you handle a major architectural decision affecting thousands of engineers?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_026",
-      "text": "How would you optimize System Design for latency?",
+      "text": "Design a strategy for reducing technical debt in Amazon's systems.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_027",
-      "text": "Explain how you would teach Optimization to a junior engineer.",
+      "text": "How do you approach building and mentoring high-performing teams at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_028",
-      "text": "Design an API for Architecture that scales to million users.",
+      "text": "Explain your experience with cross-functional system design at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_029",
-      "text": "What are the edge cases in complex problem? How do you handle them?",
+      "text": "How would you lead a migration of Amazon's critical infrastructure?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_030",
-      "text": "Describe how Amazon might implement Scalability at scale.",
+      "text": "Design an approach to standardizing practices across Amazon's engineering orgs.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_031",
-      "text": "Compare System Design with alternatives. When is each appropriate?",
+      "text": "How do you balance local optimization with global systems thinking?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_032",
-      "text": "How would you debug a complex problem related to Optimization?",
+      "text": "Explain your approach to evaluating new technologies for Amazon.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_033",
-      "text": "Design an interview question for Architecture at senior level.",
+      "text": "How would you design a system for handling Amazon's security requirements?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_034",
-      "text": "Architect a solution combining Service A and Service B.",
+      "text": "Describe your strategy for improving Amazon's engineering productivity.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_035",
-      "text": "How would you migrate from one Scalability approach to another?",
+      "text": "How do you approach building resilient systems at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_036",
-      "text": "Describe a system that uses System Design creatively.",
+      "text": "Explain your experience with advanced performance optimization at scale.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_037",
-      "text": "What does Amazon optimize for regarding Optimization?",
+      "text": "How would you lead a multi-year platform modernization at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_038",
-      "text": "How would you test code that uses Architecture?",
+      "text": "Design an approach to handling Amazon's complex dependency management.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_039",
-      "text": "Design a monitoring system for Trade-offs performance.",
+      "text": "How do you evaluate risks in major architectural decisions?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_040",
-      "text": "Explain the trade-offs between simplicity and optimization for Scalability.",
+      "text": "Explain your approach to building systems that scale to billions of users.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Senior Software Engineer - Intermediate",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_041",
-      "text": "Architect a globally distributed system for global consistency using Distributed Systems.",
+      "text": "Design and lead the architecture for Amazon's next-generation platform.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_042",
-      "text": "Design a highly available and fault-tolerant System leveraging Global Scale.",
+      "text": "How would you approach modernizing Amazon's core infrastructure systems?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_043",
-      "text": "How would you implement distributed problem at million users using Resilience?",
+      "text": "Explain your vision for Amazon's technical direction over 5 years.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_044",
-      "text": "Design a system that maintains ACID properties while using Innovation.",
+      "text": "Design a strategy for Amazon to achieve 10x improvement in a critical metric.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_045",
-      "text": "Describe how you would scale System to handle 10x growth using Performance.",
+      "text": "How would you lead the consolidation of multiple Amazon platforms?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_046",
-      "text": "How would you solve the consistency in a distributed Distributed Systems system?",
+      "text": "Explain your approach to building self-healing infrastructure at Amazon.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_047",
-      "text": "Design a multi-region System that uses Global Scale efficiently.",
+      "text": "Design a framework for architectural decision-making at Amazon scale.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_048",
-      "text": "How would you achieve efficiency while minimizing operational costs in Resilience?",
+      "text": "How would you build a culture of architectural excellence at Amazon?",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_049",
-      "text": "Architect a resilient System that uses Innovation with automatic failover.",
+      "text": "Explain your strategy for managing Amazon's technical debt at scale.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_050",
-      "text": "Design a Performance system that handles Byzantine failures.",
+      "text": "Design an approach to making Amazon's systems AI-ready.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_051",
-      "text": "How would you implement real-time real-time collaboration using Distributed Systems?",
+      "text": "How would you lead Amazon's transition to a new technology paradigm?",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_052",
-      "text": "Describe a Global Scale approach that benefits while avoiding drawbacks.",
+      "text": "Explain your vision for Amazon's developer experience and productivity.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_053",
-      "text": "How would you benchmark and optimize Resilience performance at scale?",
+      "text": "Design a strategy for Amazon's system reliability at unprecedented scale.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_054",
-      "text": "Design a Innovation system supporting millions of users with strict SLA.",
+      "text": "How would you approach building industry-leading infrastructure at Amazon?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_055",
-      "text": "How would you migrate petabytes of data using Performance?",
+      "text": "Explain your framework for evaluating and adopting emerging technologies.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_056",
-      "text": "Describe how Amazon likely implemented Distributed Systems internally.",
+      "text": "Design an approach to fostering innovation within Amazon's constraints.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_057",
-      "text": "How would you ensure ACID properties in a Global Scale system across multiple continents?",
+      "text": "How would you lead technical strategy across Amazon's organization?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_058",
-      "text": "Design a Resilience system handling network partition without data loss.",
+      "text": "Explain your approach to building future-proof systems at Amazon.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_059",
-      "text": "What recent advances in Innovation could improve Amazon's systems?",
+      "text": "Design a vision for Amazon's architecture beyond current scale.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     },
     {
       "id": "q_060",
-      "text": "How would you design a Performance system for extreme throughput requirements?",
+      "text": "How would you build a world-class engineering culture focused on impact?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Senior Software Engineer - Advanced",
       "company": "amazon",
       "role": "senior_software_engineer"
     }

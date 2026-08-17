@@ -12,19 +12,23 @@ async def generate_questions_for_context(
     db,
 ) -> dict:
     """
-    Retrieves chunks for context_name from ChromaDB, calls Sonnet to generate
-    topic+question pairs, saves to data/questions/{context_name}_questions.json.
+    Retrieves chunks for company (derived from context_name) from ChromaDB.
+    context_name format: "company_role" or just "company"
+    Calls Sonnet to generate topic+question pairs, saves to data/questions/{context_name}_questions.json.
     Returns the parsed questions dict.
     """
+    # Extract company from context_name (handles both "company" and "company_role" formats)
+    company = context_name.split("_")[0]
+    
     collection = get_collection()
     results = collection.get(
-        where={"source": {"$eq": context_name}},
+        where={"source": {"$eq": company}},
         include=["documents"],
     )
     docs = results.get("documents") or []
     if not docs:
         raise ValueError(
-            f"No chunks found for context '{context_name}'. Run ingest first."
+            f"No chunks found for company '{company}'. Run ingest first."
         )
 
     # Sample up to 20 chunks spread evenly across the document
@@ -42,7 +46,7 @@ async def generate_questions_for_context(
         session_id="admin",
         turn_id=-1,
         template_id="QUESTION_GEN",
-        model_id=settings.bedrock_sonnet_model_id,
+        model_id=settings.bedrock_nova_pro_model_id,
         temperature=0.3,
         max_tokens=2048,
         rendered_prompt=rendered,

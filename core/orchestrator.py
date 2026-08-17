@@ -97,8 +97,8 @@ async def get_next_question(session_id: str, db) -> dict:
     # Use text field (new structure) or seed_question (legacy)
     question_text = topic.text or topic.seed_question or ""
 
-    # Retrieve top-k chunks; HNSW index already warmed at startup (C1)
-    results = retrieve(question_text)
+    # Retrieve top-k chunks filtered by company; HNSW index already warmed at startup (C1)
+    results = retrieve(question_text, company=s.company)
     topic.context_chunks = "\n\n---\n\n".join(r[1] for r in results)
     await log_rag_retrieval(
         db, s.session_id, s.global_turn_index, topic.topic_id,

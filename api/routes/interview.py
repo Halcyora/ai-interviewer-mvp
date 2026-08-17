@@ -46,27 +46,31 @@ async def list_contexts():
 
 @router.post("/start")
 async def start_interview(body: SessionCreate, db: AsyncSession = Depends(get_db)):
-    # Derive context_name from company and role
-    if not body.context_name:
-        body.context_name = f"{body.company}_{body.role}"
+    # Derive context_name from company and role for questions lookup
+    questions_context = f"{body.company}_{body.role}"
     
-    q_path = Path("data/questions") / f"{body.context_name}_questions.json"
+    q_path = Path("data/questions") / f"{questions_context}_questions.json"
     if not q_path.exists():
         raise HTTPException(404, f"Question file not found: {q_path}. Expected: {body.company}/{body.role}")
     
-    # Validate context is ingested in ChromaDB (C4: avoid empty retrieval)
+    # Validate company context is ingested in ChromaDB
     collection = get_collection()
-    if collection.count() == 0:
-        raise HTTPException(400, f"Context '{body.context_name}' not ingested. Run: python -m scripts.ingest --context data/context/{body.context_name}.txt")
+    results = collection.get(
+        where={"source": {"$eq": body.company}},
+        include=["documents"],
+    )
+    if not results.get("ids"):
+        raise HTTPException(400, f"Context for '{body.company}' not ingested. Run: python -m scripts.ingest --context data/context/{body.company}_detailed_context.txt")
     
     questions_data = json.loads(q_path.read_text(encoding="utf-8"))
     session_id = str(uuid.uuid4())
     
-    # Count total questions across all difficulties
-    total_questions = len(questions_data.get("questions", []))
+    # Support both "questions" array (old format) and "topics" array (LLM-generated)
+    questions_list = questions_data.get("questions", []) or questions_data.get("topics", [])
+    total_questions = len(questions_list)
     
-    await create_session(db, session_id, body.context_name, total_questions)
-    init_session(session_id, questions_data.get("questions", []), company=body.company, role=body.role)
+    await create_session(db, session_id, body.company, total_questions)
+    init_session(session_id, questions_list, company=body.company, role=body.role)
     first_q = await get_next_question(session_id, db)
     return {
         "session_id": session_id,

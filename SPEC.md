@@ -12,8 +12,8 @@
 ### C1 — LOW LATENCY
 - All I/O (DB, S3, Bedrock) is `async`; use `aiosqlite` + SQLAlchemy async engine
 - ChromaDB collection is pre-loaded into memory at app startup (call `warmup()` in lifespan)
-- Use **Claude 3.5 Haiku** (`bedrock_haiku_model_id`) for: evaluation, follow-up generation (fast, cheap)
-- Use **Claude 3.5 Sonnet** (`bedrock_sonnet_model_id`) for: report generation only (quality needed)
+- Use **Amazon Nova Lite** (`bedrock_nova_lite_model_id`) for: evaluation, follow-up generation (fast, cheap)
+- Use **Amazon Nova Pro** (`bedrock_nova_pro_model_id`) for: report generation only (quality needed)
 - Seed questions are served directly — no LLM call needed (zero latency for first question)
 - LRU cache on `get_collection()` and `get_bedrock_runtime()` — no re-init per request
 - `max_tokens` hard caps: eval=256, follow_up=200, question_gen=512, report=1024
@@ -141,8 +141,8 @@ httpx==0.27.2
 AWS_ACCESS_KEY_ID=your_key_here
 AWS_SECRET_ACCESS_KEY=your_secret_here
 AWS_DEFAULT_REGION=us-east-1
-BEDROCK_HAIKU_MODEL_ID=anthropic.claude-3-5-haiku-20241022-v1:0
-BEDROCK_SONNET_MODEL_ID=anthropic.claude-3-5-sonnet-20241022-v2:0
+BEDROCK_NOVA_LITE_MODEL_ID=amazon.nova-2-lite-v1:0
+BEDROCK_NOVA_PRO_MODEL_ID=amazon.nova-pro-v1:0
 BEDROCK_EMBED_MODEL_ID=amazon.titan-embed-text-v2:0
 CHROMA_PERSIST_DIR=./chroma_db
 SQLITE_DB_PATH=./interview.db
@@ -169,8 +169,8 @@ class Settings(BaseSettings):
     aws_access_key_id: str
     aws_secret_access_key: str
     aws_default_region: str = "us-east-1"
-    bedrock_haiku_model_id: str = "anthropic.claude-3-5-haiku-20241022-v1:0"
-    bedrock_sonnet_model_id: str = "anthropic.claude-3-5-sonnet-20241022-v2:0"
+    bedrock_nova_lite_model_id: str = "amazon.nova-2-lite-v1:0"
+    bedrock_nova_pro_model_id: str = "amazon.nova-pro-v1:0"
     bedrock_embed_model_id: str = "amazon.titan-embed-text-v2:0"
     chroma_persist_dir: str = "./chroma_db"
     sqlite_db_path: str = "./interview.db"
@@ -1010,13 +1010,13 @@ async def evaluate_answer(
     )
     response_text, meta = _invoke_bedrock(
         rendered,
-        model_id=settings.bedrock_haiku_model_id,
+        model_id=settings.bedrock_nova_lite_model_id,
         max_tokens=256,
         temperature=0.0,
     )
     await append_llm_audit(
         db=db, session_id=session_id, turn_id=turn_id,
-        template_id="EVALUATOR", model_id=settings.bedrock_haiku_model_id,
+        template_id="EVALUATOR", model_id=settings.bedrock_nova_lite_model_id,
         temperature=0.0, max_tokens=256, rendered_prompt=rendered,
         response_text=response_text, input_tokens=meta["input_tokens"],
         output_tokens=meta["output_tokens"], latency_ms=meta["latency_ms"],
@@ -1107,7 +1107,7 @@ async def generate_follow_up(
     })
     t0 = time.monotonic()
     response = client.invoke_model(
-        modelId=settings.bedrock_haiku_model_id, body=body,
+        modelId=settings.bedrock_nova_lite_model_id, body=body,
         contentType="application/json", accept="application/json",
     )
     latency_ms = int((time.monotonic() - t0) * 1000)
@@ -1116,7 +1116,7 @@ async def generate_follow_up(
     usage = resp_body.get("usage", {})
     await append_llm_audit(
         db=db, session_id=session_id, turn_id=turn_id,
-        template_id="FOLLOW_UP_GEN", model_id=settings.bedrock_haiku_model_id,
+        template_id="FOLLOW_UP_GEN", model_id=settings.bedrock_nova_lite_model_id,
         temperature=0.7, max_tokens=200, rendered_prompt=rendered,
         response_text=text, input_tokens=usage.get("input_tokens", 0),
         output_tokens=usage.get("output_tokens", 0), latency_ms=latency_ms,
@@ -1379,7 +1379,7 @@ async def generate_report(session_id: str, orchestrator_state, db) -> dict:
     })
     t0 = time.monotonic()
     response = client.invoke_model(
-        modelId=settings.bedrock_sonnet_model_id, body=body,
+        modelId=settings.bedrock_nova_pro_model_id, body=body,
         contentType="application/json", accept="application/json",
     )
     latency_ms = int((time.monotonic() - t0) * 1000)
@@ -1390,7 +1390,7 @@ async def generate_report(session_id: str, orchestrator_state, db) -> dict:
     prev_hash = await get_last_audit_hash(db, session_id)
     await append_llm_audit(
         db=db, session_id=session_id, turn_id=-1, template_id="REPORT_GEN",
-        model_id=settings.bedrock_sonnet_model_id, temperature=0.5, max_tokens=1024,
+        model_id=settings.bedrock_nova_pro_model_id, temperature=0.5, max_tokens=1024,
         rendered_prompt=rendered, response_text=text,
         input_tokens=usage.get("input_tokens", 0),
         output_tokens=usage.get("output_tokens", 0),

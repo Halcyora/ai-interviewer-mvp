@@ -4,481 +4,481 @@
   "questions": [
     {
       "id": "q_001",
-      "text": "Explain the fundamentals of Data Structures. How does it work in Amazon?",
+      "text": "What are the key responsibilities of an Engineering Manager at Amazon?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_002",
-      "text": "What are the key concepts of Algorithms and why are they important for Engineering Manager?",
+      "text": "How do you approach building and scaling teams at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_003",
-      "text": "Describe the basic approach to solving a Time Complexity problem in Amazon interviews.",
+      "text": "Explain your philosophy on mentoring and developing engineers at Amazon.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_004",
-      "text": "What is the difference between Implementation and related concepts? Which is better and when?",
+      "text": "What makes a good engineering culture at Amazon?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_005",
-      "text": "Walk through a simple example of Debugging application in real systems.",
+      "text": "How do you approach performance management at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_006",
-      "text": "What are the common mistakes developers make when working with Data Structures?",
+      "text": "Describe your experience with hiring at Amazon.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_007",
-      "text": "How would you explain Algorithms to someone new to engineering?",
+      "text": "How do you balance business goals with engineering needs at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_008",
-      "text": "List three important properties of Time Complexity and explain each one.",
+      "text": "Explain your approach to team communication at Amazon.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_009",
-      "text": "What tools or libraries does Amazon use for Implementation?",
+      "text": "What is your leadership philosophy at Amazon?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_010",
-      "text": "Describe how Debugging scales with data size. What are the limits?",
+      "text": "How do you handle conflicts within your team at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_011",
-      "text": "What prerequisites do you need to understand Data Structures?",
+      "text": "Describe your approach to career development for engineers at Amazon.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_012",
-      "text": "How does Algorithms relate to other Amazon technologies?",
+      "text": "How do you measure team productivity at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_013",
-      "text": "Explain a real-world scenario where Time Complexity is essential.",
+      "text": "What makes a strong engineering team at Amazon?",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_014",
-      "text": "What would happen if you ignored best practices for Implementation?",
+      "text": "How do you approach technical decision-making with your team at Amazon?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_015",
-      "text": "Describe the evolution of Debugging over the last 5 years.",
+      "text": "Explain your approach to handling underperformance at Amazon.",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_016",
-      "text": "How would you validate your understanding of Data Structures?",
+      "text": "How do you foster innovation within your team at Amazon?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_017",
-      "text": "List common patterns developers use when implementing Algorithms.",
+      "text": "Describe your experience managing distributed teams at Amazon.",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_018",
-      "text": "Why might Time Complexity be asked in a Amazon interview for Engineering Manager?",
+      "text": "How do you approach quarterly planning with your team at Amazon?",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_019",
-      "text": "What is the most important concept to master in Implementation?",
+      "text": "What is your approach to retention at Amazon?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_020",
-      "text": "How does Debugging differ across programming languages?",
+      "text": "How do you build psychological safety in your team at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Engineering Manager - Beginner",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_021",
-      "text": "Design a system that leverages System Design to solve auto-complete.",
+      "text": "How would you scale a team from 5 to 50 engineers at Amazon?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_022",
-      "text": "How would you design using Optimization? Discuss trade-offs.",
+      "text": "Design an organization structure for a major Amazon initiative.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_023",
-      "text": "Compare different approaches to Architecture and justify your choice.",
+      "text": "How would you improve engineering productivity across Amazon?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_024",
-      "text": "Walk through your thought process for Trade-offs in a production scenario.",
+      "text": "Explain your approach to building high-performing engineering organizations.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_025",
-      "text": "Design an efficient solution for complex problem using Scalability.",
+      "text": "How would you handle a major team restructuring at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_026",
-      "text": "How would you optimize System Design for latency?",
+      "text": "Design a hiring strategy for a critical Amazon team.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_027",
-      "text": "Explain how you would teach Optimization to a junior engineer.",
+      "text": "How would you develop future leaders from within at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_028",
-      "text": "Design an API for Architecture that scales to million users.",
+      "text": "Explain your strategy for improving Amazon's code quality and practices.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_029",
-      "text": "What are the edge cases in complex problem? How do you handle them?",
+      "text": "How would you navigate a major technical debt situation with your team?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_030",
-      "text": "Describe how Amazon might implement Scalability at scale.",
+      "text": "Design a career framework for your Amazon organization.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_031",
-      "text": "Compare System Design with alternatives. When is each appropriate?",
+      "text": "How would you improve cross-team collaboration at Amazon?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_032",
-      "text": "How would you debug a complex problem related to Optimization?",
+      "text": "Explain your approach to managing upwards and influencing at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_033",
-      "text": "Design an interview question for Architecture at senior level.",
+      "text": "How would you build accountability and ownership at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_034",
-      "text": "Architect a solution combining Service A and Service B.",
+      "text": "Design an approach to handling rapid growth at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_035",
-      "text": "How would you migrate from one Scalability approach to another?",
+      "text": "How would you improve your team's impact on Amazon business metrics?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_036",
-      "text": "Describe a system that uses System Design creatively.",
+      "text": "Explain your strategy for retaining top talent at Amazon.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_037",
-      "text": "What does Amazon optimize for regarding Optimization?",
+      "text": "How would you lead your team through a major crisis at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_038",
-      "text": "How would you test code that uses Architecture?",
+      "text": "Design a system for career growth and promotions at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_039",
-      "text": "Design a monitoring system for Trade-offs performance.",
+      "text": "How would you improve diversity and inclusion in your team?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_040",
-      "text": "Explain the trade-offs between simplicity and optimization for Scalability.",
+      "text": "Explain your approach to building resilient team culture.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Engineering Manager - Intermediate",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_041",
-      "text": "Architect a globally distributed system for global consistency using Distributed Systems.",
+      "text": "Design an engineering organization for Amazon at 10x scale.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_042",
-      "text": "Design a highly available and fault-tolerant System leveraging Global Scale.",
+      "text": "How would you lead Amazon's engineering through major transformation?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_043",
-      "text": "How would you implement distributed problem at million users using Resilience?",
+      "text": "Explain your vision for Amazon's engineering culture and impact.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_044",
-      "text": "Design a system that maintains ACID properties while using Innovation.",
+      "text": "Design a talent development strategy for Amazon's engineering org.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_045",
-      "text": "Describe how you would scale System to handle 10x growth using Performance.",
+      "text": "How would you build world-class engineering leadership at Amazon?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_046",
-      "text": "How would you solve the consistency in a distributed Distributed Systems system?",
+      "text": "Explain your approach to balancing growth with stability at Amazon.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_047",
-      "text": "Design a multi-region System that uses Global Scale efficiently.",
+      "text": "Design a strategy for making Amazon an employer of choice.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_048",
-      "text": "How would you achieve efficiency while minimizing operational costs in Resilience?",
+      "text": "How would you lead Amazon's engineering through unprecedented challenges?",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_049",
-      "text": "Architect a resilient System that uses Innovation with automatic failover.",
+      "text": "Explain your framework for making hard organizational decisions.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_050",
-      "text": "Design a Performance system that handles Byzantine failures.",
+      "text": "Design an approach to building innovation into Amazon's culture.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_051",
-      "text": "How would you implement real-time real-time collaboration using Distributed Systems?",
+      "text": "How would you create industry-leading engineering at Amazon?",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_052",
-      "text": "Describe a Global Scale approach that benefits while avoiding drawbacks.",
+      "text": "Explain your vision for Amazon's diverse and inclusive engineering org.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_053",
-      "text": "How would you benchmark and optimize Resilience performance at scale?",
+      "text": "Design a system for identifying and developing future executives.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_054",
-      "text": "Design a Innovation system supporting millions of users with strict SLA.",
+      "text": "How would you build trust and credibility across Amazon leadership?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_055",
-      "text": "How would you migrate petabytes of data using Performance?",
+      "text": "Explain your approach to navigating complex stakeholder dynamics.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_056",
-      "text": "Describe how Amazon likely implemented Distributed Systems internally.",
+      "text": "Design a strategy for Amazon's engineering competitiveness.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_057",
-      "text": "How would you ensure ACID properties in a Global Scale system across multiple continents?",
+      "text": "How would you balance short-term delivery with long-term capabilities?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_058",
-      "text": "Design a Resilience system handling network partition without data loss.",
+      "text": "Explain your framework for organizational resilience and adaptability.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_059",
-      "text": "What recent advances in Innovation could improve Amazon's systems?",
+      "text": "Design an approach to making engineering decisions at the exec level.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     },
     {
       "id": "q_060",
-      "text": "How would you design a Performance system for extreme throughput requirements?",
+      "text": "How would you build a legacy of impact at Amazon?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Engineering Manager - Advanced",
       "company": "amazon",
       "role": "engineering_manager"
     }

@@ -4,481 +4,481 @@
   "questions": [
     {
       "id": "q_001",
-      "text": "Explain the fundamentals of Data Structures. How does it work in Apple?",
+      "text": "What does a Product Manager do at Apple?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_002",
-      "text": "What are the key concepts of Algorithms and why are they important for Product Manager?",
+      "text": "How do you approach understanding user needs at Apple?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_003",
-      "text": "Describe the basic approach to solving a Time Complexity problem in Apple interviews.",
+      "text": "Explain your philosophy on prioritization at Apple.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_004",
-      "text": "What is the difference between Implementation and related concepts? Which is better and when?",
+      "text": "What makes a good product strategy at Apple?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_005",
-      "text": "Walk through a simple example of Debugging application in real systems.",
+      "text": "How do you work with engineering teams at Apple?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_006",
-      "text": "What are the common mistakes developers make when working with Data Structures?",
+      "text": "Describe your approach to market research at Apple.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_007",
-      "text": "How would you explain Algorithms to someone new to engineering?",
+      "text": "How do you measure product success at Apple?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_008",
-      "text": "List three important properties of Time Complexity and explain each one.",
+      "text": "Explain your approach to user feedback at Apple.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_009",
-      "text": "What tools or libraries does Apple use for Implementation?",
+      "text": "What is your philosophy on product roadmaps at Apple?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_010",
-      "text": "Describe how Debugging scales with data size. What are the limits?",
+      "text": "How do you approach competitive analysis at Apple?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_011",
-      "text": "What prerequisites do you need to understand Data Structures?",
+      "text": "Describe your experience with Apple users and their pain points.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_012",
-      "text": "How does Algorithms relate to other Apple technologies?",
+      "text": "How do you approach A/B testing at Apple?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_013",
-      "text": "Explain a real-world scenario where Time Complexity is essential.",
+      "text": "Explain your approach to product launch at Apple.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_014",
-      "text": "What would happen if you ignored best practices for Implementation?",
+      "text": "What makes a compelling product vision at Apple?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_015",
-      "text": "Describe the evolution of Debugging over the last 5 years.",
+      "text": "How do you balance user needs with business goals at Apple?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_016",
-      "text": "How would you validate your understanding of Data Structures?",
+      "text": "Describe your experience with analytics at Apple.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_017",
-      "text": "List common patterns developers use when implementing Algorithms.",
+      "text": "How do you approach technical feasibility discussions at Apple?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_018",
-      "text": "Why might Time Complexity be asked in a Apple interview for Product Manager?",
+      "text": "Explain your approach to cross-functional collaboration.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_019",
-      "text": "What is the most important concept to master in Implementation?",
+      "text": "What metrics matter most for Apple products?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_020",
-      "text": "How does Debugging differ across programming languages?",
+      "text": "How do you stay close to users at Apple?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Product Manager - Beginner",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_021",
-      "text": "Design a system that leverages System Design to solve auto-complete.",
+      "text": "How would you grow a Apple product from 1M to 100M users?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_022",
-      "text": "How would you design using Optimization? Discuss trade-offs.",
+      "text": "Design a product strategy for a new Apple market.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_023",
-      "text": "Compare different approaches to Architecture and justify your choice.",
+      "text": "How would you pivot a Apple product based on market feedback?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_024",
-      "text": "Walk through your thought process for Trade-offs in a production scenario.",
+      "text": "Explain your approach to building products for different Apple markets.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_025",
-      "text": "Design an efficient solution for complex problem using Scalability.",
+      "text": "How would you improve a struggling Apple product?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_026",
-      "text": "How would you optimize System Design for latency?",
+      "text": "Design a roadmap for a major Apple initiative.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_027",
-      "text": "Explain how you would teach Optimization to a junior engineer.",
+      "text": "How would you build a product that drives Apple revenue?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_028",
-      "text": "Design an API for Architecture that scales to million users.",
+      "text": "Explain your strategy for user acquisition at Apple.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_029",
-      "text": "What are the edge cases in complex problem? How do you handle them?",
+      "text": "How would you handle declining engagement in a Apple product?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_030",
-      "text": "Describe how Apple might implement Scalability at scale.",
+      "text": "Design a go-to-market strategy for a Apple product.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_031",
-      "text": "Compare System Design with alternatives. When is each appropriate?",
+      "text": "How would you build a sustainable competitive advantage at Apple?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_032",
-      "text": "How would you debug a complex problem related to Optimization?",
+      "text": "Explain your approach to internationalization for Apple products.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_033",
-      "text": "Design an interview question for Architecture at senior level.",
+      "text": "How would you navigate a major product crisis at Apple?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_034",
-      "text": "Architect a solution combining Service A and Service B.",
+      "text": "Design a strategy for improving product engagement metrics.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_035",
-      "text": "How would you migrate from one Scalability approach to another?",
+      "text": "How would you balance short-term metrics with long-term user value?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_036",
-      "text": "Describe a system that uses System Design creatively.",
+      "text": "Explain your approach to building brand loyalty at Apple.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_037",
-      "text": "What does Apple optimize for regarding Optimization?",
+      "text": "How would you identify and enter new market opportunities?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_038",
-      "text": "How would you test code that uses Architecture?",
+      "text": "Design an approach to managing multiple product lines at Apple.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_039",
-      "text": "Design a monitoring system for Trade-offs performance.",
+      "text": "How would you improve monetization while maintaining user trust?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_040",
-      "text": "Explain the trade-offs between simplicity and optimization for Scalability.",
+      "text": "Explain your strategy for product-market fit optimization.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Product Manager - Intermediate",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_041",
-      "text": "Architect a globally distributed system for global consistency using Distributed Systems.",
+      "text": "Design the next billion-user product at Apple.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_042",
-      "text": "Design a highly available and fault-tolerant System leveraging Global Scale.",
+      "text": "How would you transform Apple's product portfolio?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_043",
-      "text": "How would you implement distributed problem at million users using Resilience?",
+      "text": "Explain your vision for Apple's product leadership position.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_044",
-      "text": "Design a system that maintains ACID properties while using Innovation.",
+      "text": "Design a strategy for Apple to dominate multiple markets.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_045",
-      "text": "Describe how you would scale System to handle 10x growth using Performance.",
+      "text": "How would you lead Apple through major product disruption?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_046",
-      "text": "How would you solve the consistency in a distributed Distributed Systems system?",
+      "text": "Explain your approach to anticipating market shifts at Apple.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_047",
-      "text": "Design a multi-region System that uses Global Scale efficiently.",
+      "text": "Design a system for continuous product innovation at Apple.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_048",
-      "text": "How would you achieve efficiency while minimizing operational costs in Resilience?",
+      "text": "How would you build Apple's product into a platform?",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_049",
-      "text": "Architect a resilient System that uses Innovation with automatic failover.",
+      "text": "Explain your vision for Apple's user experience in the future.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_050",
-      "text": "Design a Performance system that handles Byzantine failures.",
+      "text": "Design an approach to Apple competing against new challengers.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_051",
-      "text": "How would you implement real-time real-time collaboration using Distributed Systems?",
+      "text": "How would you make Apple the most loved brand in its category?",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_052",
-      "text": "Describe a Global Scale approach that benefits while avoiding drawbacks.",
+      "text": "Explain your strategy for Apple to expand into adjacent markets.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_053",
-      "text": "How would you benchmark and optimize Resilience performance at scale?",
+      "text": "Design a long-term product vision for Apple's ecosystem.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_054",
-      "text": "Design a Innovation system supporting millions of users with strict SLA.",
+      "text": "How would you navigate Apple's path to market leadership?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_055",
-      "text": "How would you migrate petabytes of data using Performance?",
+      "text": "Explain your framework for making billion-dollar product bets.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_056",
-      "text": "Describe how Apple likely implemented Distributed Systems internally.",
+      "text": "Design an approach to balancing innovation with execution at Apple.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_057",
-      "text": "How would you ensure ACID properties in a Global Scale system across multiple continents?",
+      "text": "How would you build products that transcend current categories?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_058",
-      "text": "Design a Resilience system handling network partition without data loss.",
+      "text": "Explain your vision for Apple's product impact on society.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_059",
-      "text": "What recent advances in Innovation could improve Apple's systems?",
+      "text": "Design a strategy for sustainable competitive advantage.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     },
     {
       "id": "q_060",
-      "text": "How would you design a Performance system for extreme throughput requirements?",
+      "text": "How would you build an enduring Apple product legacy?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Product Manager - Advanced",
       "company": "apple",
       "role": "product_manager"
     }

@@ -4,481 +4,481 @@
   "questions": [
     {
       "id": "q_001",
-      "text": "Explain the fundamentals of Data Structures. How does it work in Netflix?",
+      "text": "What are the fundamental data structures you use in Netflix systems? Explain their trade-offs.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_002",
-      "text": "What are the key concepts of Algorithms and why are they important for Software Engineer?",
+      "text": "How would you approach implementing a simple cache in Netflix's infrastructure?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_003",
-      "text": "Describe the basic approach to solving a Time Complexity problem in Netflix interviews.",
+      "text": "Describe the difference between SQL and NoSQL databases and when to use each at Netflix.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_004",
-      "text": "What is the difference between Implementation and related concepts? Which is better and when?",
+      "text": "What is an API and how do you design one for Netflix's services?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_005",
-      "text": "Walk through a simple example of Debugging application in real systems.",
+      "text": "Explain what a load balancer does and why Netflix needs multiple of them.",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_006",
-      "text": "What are the common mistakes developers make when working with Data Structures?",
+      "text": "How would you debug a performance issue in a Netflix microservice?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_007",
-      "text": "How would you explain Algorithms to someone new to engineering?",
+      "text": "What is horizontal vs vertical scaling? Which does Netflix prefer and why?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_008",
-      "text": "List three important properties of Time Complexity and explain each one.",
+      "text": "Describe how you would implement a simple queue system for Netflix.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_009",
-      "text": "What tools or libraries does Netflix use for Implementation?",
+      "text": "What is eventual consistency and how does Netflix handle it?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_010",
-      "text": "Describe how Debugging scales with data size. What are the limits?",
+      "text": "Explain the CAP theorem and its implications for Netflix's databases.",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_011",
-      "text": "What prerequisites do you need to understand Data Structures?",
+      "text": "How would you design a notification system at Netflix scale?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_012",
-      "text": "How does Algorithms relate to other Netflix technologies?",
+      "text": "What is a reverse proxy and where does Netflix use it?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_013",
-      "text": "Explain a real-world scenario where Time Complexity is essential.",
+      "text": "Describe the basics of RESTful API design as applied at Netflix.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_014",
-      "text": "What would happen if you ignored best practices for Implementation?",
+      "text": "What are the main challenges of distributed systems at Netflix?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_015",
-      "text": "Describe the evolution of Debugging over the last 5 years.",
+      "text": "How would you implement rate limiting for a Netflix API?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_016",
-      "text": "How would you validate your understanding of Data Structures?",
+      "text": "Explain database indexing and its importance at Netflix scale.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_017",
-      "text": "List common patterns developers use when implementing Algorithms.",
+      "text": "What is containerization and why does Netflix use Docker?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_018",
-      "text": "Why might Time Complexity be asked in a Netflix interview for Software Engineer?",
+      "text": "Describe basic monitoring and alerting for Netflix systems.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_019",
-      "text": "What is the most important concept to master in Implementation?",
+      "text": "How would you handle data consistency across Netflix's services?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_020",
-      "text": "How does Debugging differ across programming languages?",
+      "text": "What is version control and why is it critical at Netflix?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Software Engineer - Beginner",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_021",
-      "text": "Design a system that leverages System Design to solve auto-complete.",
+      "text": "How would you design a distributed cache system for Netflix?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_022",
-      "text": "How would you design using Optimization? Discuss trade-offs.",
+      "text": "Explain the trade-offs between consistency and availability in Netflix's systems.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_023",
-      "text": "Compare different approaches to Architecture and justify your choice.",
+      "text": "How does Netflix handle database scaling for billions of users?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_024",
-      "text": "Walk through your thought process for Trade-offs in a production scenario.",
+      "text": "Describe a complex query optimization problem you might face at Netflix.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_025",
-      "text": "Design an efficient solution for complex problem using Scalability.",
+      "text": "How would you design a real-time communication system for Netflix?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_026",
-      "text": "How would you optimize System Design for latency?",
+      "text": "What strategies does Netflix use for data partitioning and sharding?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_027",
-      "text": "Explain how you would teach Optimization to a junior engineer.",
+      "text": "Explain how Netflix maintains data consistency across multiple data centers.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_028",
-      "text": "Design an API for Architecture that scales to million users.",
+      "text": "How would you implement a distributed transaction system at Netflix?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_029",
-      "text": "What are the edge cases in complex problem? How do you handle them?",
+      "text": "Describe the challenges of maintaining Netflix's search indexes at scale.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_030",
-      "text": "Describe how Netflix might implement Scalability at scale.",
+      "text": "How does Netflix handle cascading failures in their infrastructure?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_031",
-      "text": "Compare System Design with alternatives. When is each appropriate?",
+      "text": "Design a system for handling Netflix's message queuing at scale.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_032",
-      "text": "How would you debug a complex problem related to Optimization?",
+      "text": "Explain how Netflix manages service dependencies and circuit breakers.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_033",
-      "text": "Design an interview question for Architecture at senior level.",
+      "text": "How would you implement comprehensive logging at Netflix scale?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_034",
-      "text": "Architect a solution combining Service A and Service B.",
+      "text": "Describe Netflix's approach to handling peak traffic during events.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_035",
-      "text": "How would you migrate from one Scalability approach to another?",
+      "text": "How does Netflix balance between feature speed and system reliability?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_036",
-      "text": "Describe a system that uses System Design creatively.",
+      "text": "Explain the role of background jobs in Netflix's architecture.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_037",
-      "text": "What does Netflix optimize for regarding Optimization?",
+      "text": "How would you design metrics collection for Netflix's services?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_038",
-      "text": "How would you test code that uses Architecture?",
+      "text": "Describe strategies for zero-downtime deployments at Netflix.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_039",
-      "text": "Design a monitoring system for Trade-offs performance.",
+      "text": "How does Netflix handle backward compatibility across services?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_040",
-      "text": "Explain the trade-offs between simplicity and optimization for Scalability.",
+      "text": "Explain how Netflix manages database migrations at scale.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Software Engineer - Intermediate",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_041",
-      "text": "Architect a globally distributed system for global consistency using Distributed Systems.",
+      "text": "Design a globally distributed database system for Netflix's data consistency requirements.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_042",
-      "text": "Design a highly available and fault-tolerant System leveraging Global Scale.",
+      "text": "How would you architect Netflix's system to handle 10x traffic growth?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_043",
-      "text": "How would you implement distributed problem at million users using Resilience?",
+      "text": "Explain the consensus algorithms used in Netflix's distributed systems.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_044",
-      "text": "Design a system that maintains ACID properties while using Innovation.",
+      "text": "How does Netflix optimize query performance across multiple regions?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_045",
-      "text": "Describe how you would scale System to handle 10x growth using Performance.",
+      "text": "Design a fault-tolerant coordination system for Netflix's microservices.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_046",
-      "text": "How would you solve the consistency in a distributed Distributed Systems system?",
+      "text": "Explain how Netflix balances consistency, availability, and partition tolerance.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_047",
-      "text": "Design a multi-region System that uses Global Scale efficiently.",
+      "text": "How would you design a streaming data processing system for Netflix?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_048",
-      "text": "How would you achieve efficiency while minimizing operational costs in Resilience?",
+      "text": "Describe the advanced caching strategies used throughout Netflix's infrastructure.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_049",
-      "text": "Architect a resilient System that uses Innovation with automatic failover.",
+      "text": "How does Netflix implement time-series data storage at scale?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_050",
-      "text": "Design a Performance system that handles Byzantine failures.",
+      "text": "Explain the challenges and solutions for maintaining Netflix's graph databases.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_051",
-      "text": "How would you implement real-time real-time collaboration using Distributed Systems?",
+      "text": "Design a system for anomaly detection in Netflix's infrastructure.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_052",
-      "text": "Describe a Global Scale approach that benefits while avoiding drawbacks.",
+      "text": "How would you architect Netflix's system for multi-tenancy at scale?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_053",
-      "text": "How would you benchmark and optimize Resilience performance at scale?",
+      "text": "Explain advanced sharding strategies for Netflix's most critical systems.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_054",
-      "text": "Design a Innovation system supporting millions of users with strict SLA.",
+      "text": "How does Netflix handle complex distributed transactions efficiently?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_055",
-      "text": "How would you migrate petabytes of data using Performance?",
+      "text": "Design a chaos engineering framework for Netflix's reliability testing.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_056",
-      "text": "Describe how Netflix likely implemented Distributed Systems internally.",
+      "text": "Explain how Netflix optimizes storage efficiency for massive datasets.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_057",
-      "text": "How would you ensure ACID properties in a Global Scale system across multiple continents?",
+      "text": "How would you implement advanced security at Netflix's infrastructure layer?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_058",
-      "text": "Design a Resilience system handling network partition without data loss.",
+      "text": "Describe the techniques Netflix uses for system observability and tracing.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_059",
-      "text": "What recent advances in Innovation could improve Netflix's systems?",
+      "text": "How does Netflix handle versioning and compatibility across thousands of services?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     },
     {
       "id": "q_060",
-      "text": "How would you design a Performance system for extreme throughput requirements?",
+      "text": "Design a system for managing Netflix's infrastructure-as-code at scale.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Software Engineer - Advanced",
       "company": "netflix",
       "role": "software_engineer"
     }

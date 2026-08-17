@@ -4,481 +4,481 @@
   "questions": [
     {
       "id": "q_001",
-      "text": "Explain the fundamentals of Data Structures. How does it work in Amazon?",
+      "text": "What does a Staff Engineer do differently than a Senior Engineer at Amazon?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_002",
-      "text": "What are the key concepts of Algorithms and why are they important for Staff Engineer?",
+      "text": "How do you approach broad system design decisions at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_003",
-      "text": "Describe the basic approach to solving a Time Complexity problem in Amazon interviews.",
+      "text": "Explain your philosophy on architecture and scalability at Amazon.",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_004",
-      "text": "What is the difference between Implementation and related concepts? Which is better and when?",
+      "text": "What makes an effective technical leader at Amazon?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_005",
-      "text": "Walk through a simple example of Debugging application in real systems.",
+      "text": "How do you communicate complex technical decisions at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_006",
-      "text": "What are the common mistakes developers make when working with Data Structures?",
+      "text": "Describe your approach to influencing technical strategy at Amazon.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_007",
-      "text": "How would you explain Algorithms to someone new to engineering?",
+      "text": "What are the key responsibilities of a Staff Engineer at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_008",
-      "text": "List three important properties of Time Complexity and explain each one.",
+      "text": "How do you maintain technical depth while broadening impact at Amazon?",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_009",
-      "text": "What tools or libraries does Amazon use for Implementation?",
+      "text": "Explain your approach to fostering technical growth at Amazon.",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_010",
-      "text": "Describe how Debugging scales with data size. What are the limits?",
+      "text": "What makes a strong technical vision at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_011",
-      "text": "What prerequisites do you need to understand Data Structures?",
+      "text": "How do you approach complex problem-solving at Amazon scale?",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_012",
-      "text": "How does Algorithms relate to other Amazon technologies?",
+      "text": "Describe your experience with technical RFCs at Amazon.",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_013",
-      "text": "Explain a real-world scenario where Time Complexity is essential.",
+      "text": "How do you evaluate architectural patterns for Amazon systems?",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_014",
-      "text": "What would happen if you ignored best practices for Implementation?",
+      "text": "What is your approach to building consensus on technical decisions?",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_015",
-      "text": "Describe the evolution of Debugging over the last 5 years.",
+      "text": "How do you stay current with evolving technology at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_016",
-      "text": "How would you validate your understanding of Data Structures?",
+      "text": "Explain your approach to handling technical disagreements at Amazon.",
       "difficulty": "beginner",
-      "topic": "Data Structures",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_017",
-      "text": "List common patterns developers use when implementing Algorithms.",
+      "text": "What makes code and systems beautiful to you at Amazon?",
       "difficulty": "beginner",
-      "topic": "Algorithms",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_018",
-      "text": "Why might Time Complexity be asked in a Amazon interview for Staff Engineer?",
+      "text": "How do you approach knowledge transfer at Amazon?",
       "difficulty": "beginner",
-      "topic": "Time Complexity",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_019",
-      "text": "What is the most important concept to master in Implementation?",
+      "text": "Describe your experience with technical mentorship at Amazon.",
       "difficulty": "beginner",
-      "topic": "Implementation",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_020",
-      "text": "How does Debugging differ across programming languages?",
+      "text": "How do you measure success as a Staff Engineer at Amazon?",
       "difficulty": "beginner",
-      "topic": "Debugging",
+      "topic": "Staff Engineer - Beginner",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_021",
-      "text": "Design a system that leverages System Design to solve auto-complete.",
+      "text": "How would you architect a solution for Amazon's biggest technical challenge?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_022",
-      "text": "How would you design using Optimization? Discuss trade-offs.",
+      "text": "Design and explain a new technical standard for Amazon.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_023",
-      "text": "Compare different approaches to Architecture and justify your choice.",
+      "text": "How would you lead Amazon's migration to a new architecture?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_024",
-      "text": "Walk through your thought process for Trade-offs in a production scenario.",
+      "text": "Explain your approach to building technical consensus at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_025",
-      "text": "Design an efficient solution for complex problem using Scalability.",
+      "text": "How would you design Amazon's technical strategy for the next 3 years?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_026",
-      "text": "How would you optimize System Design for latency?",
+      "text": "Describe your experience leading major architectural initiatives at Amazon.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_027",
-      "text": "Explain how you would teach Optimization to a junior engineer.",
+      "text": "How would you improve Amazon's engineering effectiveness at scale?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_028",
-      "text": "Design an API for Architecture that scales to million users.",
+      "text": "Explain your framework for evaluating big architectural bets at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_029",
-      "text": "What are the edge cases in complex problem? How do you handle them?",
+      "text": "How would you lead Amazon's transition to new technology stacks?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_030",
-      "text": "Describe how Amazon might implement Scalability at scale.",
+      "text": "Design an approach to standardizing systems across Amazon's teams.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_031",
-      "text": "Compare System Design with alternatives. When is each appropriate?",
+      "text": "How do you balance innovation with maintaining Amazon's stability?",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_032",
-      "text": "How would you debug a complex problem related to Optimization?",
+      "text": "Explain your strategy for improving Amazon's technical culture.",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_033",
-      "text": "Design an interview question for Architecture at senior level.",
+      "text": "How would you lead complex technical initiatives across Amazon?",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_034",
-      "text": "Architect a solution combining Service A and Service B.",
+      "text": "Design a roadmap for improving Amazon's infrastructure efficiency.",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_035",
-      "text": "How would you migrate from one Scalability approach to another?",
+      "text": "How would you establish technical excellence as Amazon's standard?",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_036",
-      "text": "Describe a system that uses System Design creatively.",
+      "text": "Explain your approach to building reusable platforms at Amazon.",
       "difficulty": "intermediate",
-      "topic": "System Design",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_037",
-      "text": "What does Amazon optimize for regarding Optimization?",
+      "text": "How do you drive adoption of new technical practices at Amazon?",
       "difficulty": "intermediate",
-      "topic": "Optimization",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_038",
-      "text": "How would you test code that uses Architecture?",
+      "text": "Design a framework for technical decision-making at Amazon.",
       "difficulty": "intermediate",
-      "topic": "Architecture",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_039",
-      "text": "Design a monitoring system for Trade-offs performance.",
+      "text": "How would you address Amazon's most complex technical challenges?",
       "difficulty": "intermediate",
-      "topic": "Trade-offs",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_040",
-      "text": "Explain the trade-offs between simplicity and optimization for Scalability.",
+      "text": "Explain your vision for Amazon's technical infrastructure.",
       "difficulty": "intermediate",
-      "topic": "Scalability",
+      "topic": "Staff Engineer - Intermediate",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_041",
-      "text": "Architect a globally distributed system for global consistency using Distributed Systems.",
+      "text": "How would you architect Amazon's next-generation platform ecosystem?",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_042",
-      "text": "Design a highly available and fault-tolerant System leveraging Global Scale.",
+      "text": "Design a 10-year technical strategy for Amazon's core systems.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_043",
-      "text": "How would you implement distributed problem at million users using Resilience?",
+      "text": "Explain how you would fundamentally improve Amazon's engineering productivity.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_044",
-      "text": "Design a system that maintains ACID properties while using Innovation.",
+      "text": "Design an approach to making Amazon the industry leader in system design.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_045",
-      "text": "Describe how you would scale System to handle 10x growth using Performance.",
+      "text": "How would you lead Amazon's transition to quantum computing readiness?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_046",
-      "text": "How would you solve the consistency in a distributed Distributed Systems system?",
+      "text": "Explain your framework for navigating Amazon's biggest technical bets.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_047",
-      "text": "Design a multi-region System that uses Global Scale efficiently.",
+      "text": "Design a vision for Amazon's completely reimagined architecture.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_048",
-      "text": "How would you achieve efficiency while minimizing operational costs in Resilience?",
+      "text": "How would you build technical excellence across all of Amazon?",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_049",
-      "text": "Architect a resilient System that uses Innovation with automatic failover.",
+      "text": "Explain your strategy for Amazon to lead in distributed systems innovation.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_050",
-      "text": "Design a Performance system that handles Byzantine failures.",
+      "text": "Design an approach to Amazon's technical autonomy vs standardization trade-off.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_051",
-      "text": "How would you implement real-time real-time collaboration using Distributed Systems?",
+      "text": "How would you architect Amazon's systems for the next 50 years?",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_052",
-      "text": "Describe a Global Scale approach that benefits while avoiding drawbacks.",
+      "text": "Explain your vision for making Amazon's infrastructure self-evolving.",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_053",
-      "text": "How would you benchmark and optimize Resilience performance at scale?",
+      "text": "Design a framework for Amazon's bold architectural transformations.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_054",
-      "text": "Design a Innovation system supporting millions of users with strict SLA.",
+      "text": "How would you lead Amazon's transformation into a technology leader?",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_055",
-      "text": "How would you migrate petabytes of data using Performance?",
+      "text": "Explain your approach to building Amazon's next platform revolution.",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_056",
-      "text": "Describe how Amazon likely implemented Distributed Systems internally.",
+      "text": "Design a strategy for Amazon to achieve technical parity with competitors.",
       "difficulty": "advanced",
-      "topic": "Distributed Systems",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_057",
-      "text": "How would you ensure ACID properties in a Global Scale system across multiple continents?",
+      "text": "How would you architect systems that anticipate Amazon's future needs?",
       "difficulty": "advanced",
-      "topic": "Global Scale",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_058",
-      "text": "Design a Resilience system handling network partition without data loss.",
+      "text": "Explain your vision for Amazon's engineering at an order of magnitude larger scale.",
       "difficulty": "advanced",
-      "topic": "Resilience",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_059",
-      "text": "What recent advances in Innovation could improve Amazon's systems?",
+      "text": "Design an approach to making Amazon the gold standard for system design.",
       "difficulty": "advanced",
-      "topic": "Innovation",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     },
     {
       "id": "q_060",
-      "text": "How would you design a Performance system for extreme throughput requirements?",
+      "text": "How would you build systems that adapt to unknown future requirements?",
       "difficulty": "advanced",
-      "topic": "Performance",
+      "topic": "Staff Engineer - Advanced",
       "company": "amazon",
       "role": "staff_engineer"
     }

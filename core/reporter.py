@@ -43,7 +43,7 @@ async def generate_report(session_id: str, orchestrator_state, db) -> dict:
         session_id=session_id,
         turn_id=-1,
         template_id="REPORT_GEN",
-        model_id=settings.bedrock_sonnet_model_id,
+        model_id=settings.bedrock_nova_pro_model_id,
         temperature=0.5,
         max_tokens=1024,
         rendered_prompt=rendered,
