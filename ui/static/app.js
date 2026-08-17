@@ -3,8 +3,22 @@ let currentTurnIndex = 0;
 let totalTopics = 0;
 let ws = null;
 let mediaRecorder = null;
+let isInterviewActive = false;
+let lockedDifficulty = "";
 
 const $ = id => document.getElementById(id);
+
+function setInterviewActive(active, difficulty = "") {
+  isInterviewActive = active;
+  if (active) {
+    lockedDifficulty = difficulty || "";
+    $("difficulty-select").value = lockedDifficulty;
+  } else {
+    lockedDifficulty = "";
+  }
+  $("difficulty-select").disabled = active;
+  $("context-select").disabled = active;
+}
 
 // Load session from localStorage on page load (C4: session recovery on refresh)
 async function recoverSession() {
@@ -24,8 +38,12 @@ async function recoverSession() {
     
     // Show interview UI; hide start controls
     $("answer-section").hidden = false;
+    $("leave-btn").hidden = false;
+    $("leave-btn").disabled = false;
     $("start-btn").hidden = true;
     $("context-select").hidden = true;
+    $("difficulty-select").hidden = true;
+    setInterviewActive(true, status.difficulty || "");
     updateProgress(status.current_topic_index, status.total_topics);
     
     // Fetch and display current question
@@ -56,6 +74,37 @@ async function loadContexts() {
   $("start-btn").disabled = false;
 }
 
+function resetToMainPage() {
+  if (mediaRecorder && mediaRecorder.state !== "inactive") {
+    mediaRecorder.stop();
+  }
+  if (ws && ws.readyState === WebSocket.OPEN) {
+    ws.close();
+  }
+
+  sessionId = null;
+  currentTurnIndex = 0;
+  totalTopics = 0;
+  setInterviewActive(false);
+  localStorage.removeItem("interviewSessionId");
+
+  $("answer-section").hidden = true;
+  $("leave-btn").hidden = true;
+  $("leave-btn").disabled = false;
+  $("feedback-section").hidden = true;
+  $("start-btn").hidden = false;
+  $("start-btn").disabled = false;
+  $("context-select").hidden = false;
+  $("difficulty-select").hidden = false;
+
+  $("text-answer").value = "";
+  $("live-transcript").textContent = "";
+  $("question-text").textContent = "Select a context below and press Start Interview.";
+  $("topic-badge").textContent = "";
+  $("stretch-badge").textContent = "";
+  updateProgress(0, 0);
+}
+
 // On page load: try to recover session, then load contexts
 (async () => {
   const recovered = await recoverSession();
@@ -64,12 +113,13 @@ async function loadContexts() {
 
 async function startInterview() {
   const contextName = $("context-select").value;
+  const difficulty = $("difficulty-select").value;
   if (!contextName) { alert("Please select a context."); return; }
   $("start-btn").disabled = true;
   const res = await fetch("/interview/start", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ context_name: contextName }),
+    body: JSON.stringify({ context_name: contextName, difficulty: difficulty || null }),
   });
   if (!res.ok) {
     alert("Failed to start interview. Is the context ingested and questions file present?");
@@ -79,13 +129,17 @@ async function startInterview() {
   const data = await res.json();
   sessionId = data.session_id;
   totalTopics = data.first_question.total_topics;
+  setInterviewActive(true, difficulty || "");
   
   // Save to localStorage for recovery on refresh (C4)
   localStorage.setItem("interviewSessionId", sessionId);
   
   $("answer-section").hidden = false;
+  $("leave-btn").hidden = false;
+  $("leave-btn").disabled = false;
   $("start-btn").hidden = true;
   $("context-select").hidden = true;
+  $("difficulty-select").hidden = true;
   displayQuestion(data.first_question);
   updateProgress(0, data.first_question.total_topics);
 }
@@ -144,13 +198,37 @@ function handleEvalResult(data) {
   $("feedback-section").hidden = false;
 
   if (data.next_action === "COMPLETED") {
+    setInterviewActive(false);
     $("answer-section").hidden = true;
+    $("leave-btn").hidden = true;
     localStorage.removeItem("interviewSessionId");
     setTimeout(() => { window.location.href = `/report/${sessionId}`; }, 2000);
   } else if (data.next_question) {
     currentTurnIndex = data.next_question.turn_index;
     setTimeout(() => displayQuestion(data.next_question), 1500);
   }
+}
+
+async function leaveInterview() {
+  if (!sessionId) {
+    resetToMainPage();
+    return;
+  }
+
+  $("leave-btn").disabled = true;
+  try {
+    const res = await fetch(`/interview/leave/${sessionId}`, { method: "POST" });
+    if (!res.ok && res.status !== 404) {
+      const err = await res.json().catch(() => ({}));
+      alert(`Failed to leave interview: ${err.detail || "unknown error"}`);
+      $("leave-btn").disabled = false;
+      return;
+    }
+  } catch (e) {
+    console.error("Leave interview request failed:", e);
+  }
+
+  resetToMainPage();
 }
 
 function startAudioCapture() {
@@ -184,6 +262,12 @@ function stopAudioCapture() {
 
 $("start-btn").addEventListener("click", startInterview);
 $("submit-btn").addEventListener("click", submitTextAnswer);
+$("leave-btn").addEventListener("click", leaveInterview);
+$("difficulty-select").addEventListener("change", () => {
+  if (isInterviewActive) {
+    $("difficulty-select").value = lockedDifficulty;
+  }
+});
 $("mic-btn").addEventListener("mousedown", startAudioCapture);
 $("mic-btn").addEventListener("mouseup", stopAudioCapture);
 $("mic-btn").addEventListener("touchstart", startAudioCapture);

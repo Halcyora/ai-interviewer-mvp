@@ -35,7 +35,10 @@
           <button id="mic-btn" class="btn-secondary">&#127908; Hold to Speak</button>
           <span id="live-transcript"></span>
         </div>
-        <button id="submit-btn" class="btn-primary">Submit Answer</button>
+        <div id="answer-actions">
+          <button id="submit-btn" class="btn-primary">Submit Answer</button>
+          <button id="leave-btn" class="btn-secondary" type="button">Leave Interview</button>
+        </div>
       </section>
 
       <section id="feedback-section" hidden>
@@ -52,6 +55,12 @@
       <div id="start-row">
         <select id="context-select" class="context-select">
           <option value="">Loading contexts...</option>
+        </select>
+        <select id="difficulty-select" class="context-select">
+          <option value="">Any difficulty</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
         </select>
         <button id="start-btn" class="btn-primary">Start Interview</button>
       </div>

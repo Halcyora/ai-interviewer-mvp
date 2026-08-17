@@ -1,11 +1,12 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Literal, Optional
 
 
 class SessionCreate(BaseModel):
-    company: str  # e.g., "google", "amazon", "meta", "apple", "netflix"
-    role: str    # e.g., "software_engineer", "senior_software_engineer", etc.
-    context_name: Optional[str] = None  # derived from company_role if not provided
+    company: Optional[str] = None  # e.g., "google", "amazon", "meta", "apple", "netflix"
+    role: Optional[str] = None    # e.g., "software_engineer", "senior_software_engineer", etc.
+    context_name: Optional[str] = None  # can be provided directly by UI
+    difficulty: Optional[Literal["beginner", "intermediate", "advanced"]] = None
 
 
 class SessionOut(BaseModel):

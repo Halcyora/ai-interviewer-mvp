@@ -93,6 +93,8 @@ textarea:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px #bfdbfe44; }
 
 #audio-row { display: flex; align-items: center; gap: 0.875rem; }
 
+#answer-actions { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+
 #live-transcript { font-size: 0.85rem; color: #64748b; font-style: italic; }
 
 /* ── Buttons ─────────────────────────────────────────────────────────────── */
