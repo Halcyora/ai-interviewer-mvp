@@ -1,3 +1,7 @@
+# AI Interviewer MVP dependencies
+# Last verified: 2026-08-18
+# Python 3.11+ required
+
 fastapi==0.115.0
 uvicorn[standard]==0.30.6
 python-dotenv==1.0.1
