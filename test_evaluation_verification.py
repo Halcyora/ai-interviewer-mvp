@@ -187,7 +187,7 @@ def test_scoring_consistency():
     print("Context answer source: selected from company context file")
     score1, payload1 = run_single_answer_eval(BASE_URL, context_name, role, "TEST 1", context_good)
     if payload1 is None:
-        print("❌ TEST 1 failed; cannot continue scoring consistency checks")
+        print("[FAIL] TEST 1 failed; cannot continue scoring consistency checks")
         return False
     scores['context_good'] = score1
     print(f"Score: {score1}")
@@ -205,7 +205,7 @@ If something fails, you want to know about it. Backup systems help too."""
     
     score2, payload2 = run_single_answer_eval(BASE_URL, context_name, role, "TEST 2", generic_good)
     if payload2 is None:
-        print("❌ TEST 2 failed; cannot continue scoring consistency checks")
+        print("[FAIL] TEST 2 failed; cannot continue scoring consistency checks")
         return False
     scores['generic_good'] = score2
     print(f"Score: {score2}")
@@ -222,7 +222,7 @@ Chess is a board game."""
     
     score3, payload3 = run_single_answer_eval(BASE_URL, context_name, role, "TEST 3", bad_answer)
     if payload3 is None:
-        print("❌ TEST 3 failed; cannot continue scoring consistency checks")
+        print("[FAIL] TEST 3 failed; cannot continue scoring consistency checks")
         return False
     scores['bad'] = score3
     print(f"Score: {score3}")
@@ -240,7 +240,7 @@ Chess is a board game."""
     )
     score4, payload4 = run_single_answer_eval(BASE_URL, context_name, role, "TEST 4", moderate)
     if payload4 is None:
-        print("❌ TEST 4 failed")
+        print("[FAIL] TEST 4 failed")
         return False
     scores['moderate'] = score4
     print(f"Score: {score4}")
@@ -254,7 +254,7 @@ Chess is a board game."""
     
     print("\nRaw Scores:")
     for answer_type, score in scores.items():
-        print(f"  {answer_type:20} → {score}")
+        print(f"  {answer_type:20} => {score}")
     
     print("\nExpected Ordering (highest to lowest):")
     print("  1. context_good  (should be highest)")
@@ -265,7 +265,7 @@ Chess is a board game."""
     print("\nActual Ordering:")
     sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     for i, (answer_type, score) in enumerate(sorted_scores, 1):
-        print(f"  {i}. {answer_type:20} → {score}")
+        print(f"  {i}. {answer_type:20} => {score}")
     
     # Verify consistency
     print("\nConsistency Checks:")
@@ -275,39 +275,39 @@ Chess is a board game."""
     
     # Check 1: Context-based should be highest
     if scores.get('context_good', 0) >= scores.get('generic_good', 0):
-        print("  ✅ Context-based answer scores >= generic good")
+        print("  [OK] Context-based answer scores >= generic good")
         checks_passed += 1
     else:
-        print("  ❌ Context-based answer scores < generic good (FAIL)")
+        print("  [FAIL] Context-based answer scores < generic good (FAIL)")
     
     # Check 2: Context-based should be higher than moderate
     if scores.get('context_good', 0) >= scores.get('moderate', 0):
-        print("  ✅ Context-based answer scores >= moderate")
+        print("  [OK] Context-based answer scores >= moderate")
         checks_passed += 1
     else:
-        print("  ❌ Context-based answer scores < moderate (FAIL)")
+        print("  [FAIL] Context-based answer scores < moderate (FAIL)")
     
     # Check 3: Bad should be lowest
     if scores.get('bad', 1) <= scores.get('moderate', 0):
-        print("  ✅ Bad answer scores <= moderate")
+        print("  [OK] Bad answer scores <= moderate")
         checks_passed += 1
     else:
-        print("  ❌ Bad answer scores > moderate (FAIL)")
+        print("  [FAIL] Bad answer scores > moderate (FAIL)")
     
     # Check 4: Generic good should be higher than bad
     if scores.get('generic_good', 0) >= scores.get('bad', 0):
-        print("  ✅ Generic good answer scores >= bad")
+        print("  [OK] Generic good answer scores >= bad")
         checks_passed += 1
     else:
-        print("  ❌ Generic good answer scores < bad (FAIL)")
+        print("  [FAIL] Generic good answer scores < bad (FAIL)")
     
     print(f"\nPassed: {checks_passed}/{checks_total}")
     
     if checks_passed == checks_total:
-        print("\n✅ SCORING IS CONSISTENT AND FAIR")
+        print("\n[OK] SCORING IS CONSISTENT AND FAIR")
         return True
     else:
-        print("\n⚠️  SCORING HAS INCONSISTENCIES")
+        print("\n[WARNING]  SCORING HAS INCONSISTENCIES")
         return False
 
 
@@ -332,7 +332,7 @@ def main():
     )
 
     if start_response.status_code != 200:
-        print(f"❌ Failed to start interview: {start_response.text}")
+        print(f"[FAIL] Failed to start interview: {start_response.text}")
         return False
 
     session_data = start_response.json()
@@ -342,9 +342,9 @@ def main():
     question_text = first_q.get("question_text", "N/A")
     turn_index = first_q.get("turn_index", 0)
     
-    print(f"✓ Interview started: session_id = {session_id}")
-    print(f"✓ Company: {company} (company-specific context enabled)")
-    print(f"✓ First question: {question_text[:80]}...")
+    print(f"[OK] Interview started: session_id = {session_id}")
+    print(f"[OK] Company: {company} (company-specific context enabled)")
+    print(f"[OK] First question: {question_text[:80]}...")
 
     # Step 2: Submit an answer
     print("\nSTEP 2: Submitting answer for evaluation")
@@ -362,13 +362,13 @@ def main():
     )
 
     if answer_response.status_code != 200:
-        print(f"❌ Failed to submit answer: {answer_response.text}")
+        print(f"[FAIL] Failed to submit answer: {answer_response.text}")
         return False
 
     eval_data = answer_response.json()
-    print(f"✓ Answer evaluated successfully")
-    print(f"✓ Confidence score: {eval_data.get('confidence_score', 'N/A')}")
-    print(f"✓ Reasoning: {eval_data.get('reasoning', 'N/A')[:100]}...")
+    print(f"[OK] Answer evaluated successfully")
+    print(f"[OK] Confidence score: {eval_data.get('confidence_score', 'N/A')}")
+    print(f"[OK] Reasoning: {eval_data.get('reasoning', 'N/A')[:100]}...")
     
     # Step 3: Verify response schema
     print("\nSTEP 3: Verify evaluation response schema")
@@ -377,22 +377,22 @@ def main():
     missing_keys = [key for key in expected_keys if key not in eval_data]
     
     if missing_keys:
-        print(f"❌ Missing response keys: {missing_keys}")
+        print(f"[FAIL] Missing response keys: {missing_keys}")
         return False
     
-    print(f"✓ Response contains all required fields:")
+    print(f"[OK] Response contains all required fields:")
     print(f"  - Confidence score: {eval_data['confidence_score']}")
     print(f"  - Key points covered: {len(eval_data['key_points_covered'])} items")
     print(f"  - Missing points: {len(eval_data['missing_points'])} items")
     print(f"  - Next action: {eval_data['next_action']}")
-    print(f"\n✓ CONFIRMED: Evaluation executed successfully through API")
+    print(f"\n[OK] CONFIRMED: Evaluation executed successfully through API")
     print(f"  (Answer was processed and scored by the evaluator)")
 
     # Final summary
     print("\n" + "=" * 80)
-    print("VERIFICATION COMPLETE ✓")
+    print("VERIFICATION COMPLETE [OK]")
     print("=" * 80)
-    print("\n✓ Key Findings:")
+    print("\n[OK] Key Findings:")
     print("  1. Interview started with company=google")
     print("  2. Questions loaded from company-specific JSON file")
     print("  3. Answer submitted through /interview/answer endpoint")
@@ -401,11 +401,11 @@ def main():
     print("  6. Next action indicates interview state (FOLLOW_UP/COMPLETED/etc)")
     print("  7. Scoring is consistent: context-based > generic > bad")
     
-    print("\n✓ CONCLUSION: Direct interview flow is working correctly")
-    print("  - API endpoints responding ✓")
-    print("  - Answer evaluation working ✓" if consistency_ok else "  - Answer evaluation working ✗")
-    print("  - Response schema correct ✓")
-    print("  - Interview state management ✓")
+    print("\n[OK] CONCLUSION: Direct interview flow is working correctly")
+    print("  - API endpoints responding [OK]")
+    print("  - Answer evaluation working [OK]" if consistency_ok else "  - Answer evaluation working ✗")
+    print("  - Response schema correct [OK]")
+    print("  - Interview state management [OK]")
     
     return consistency_ok
 
