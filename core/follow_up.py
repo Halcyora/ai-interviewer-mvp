@@ -36,8 +36,8 @@ async def generate_follow_up(
     context_chunks: str,
     prev_entry_hash: str,
     db,
-) -> str:
-    """Returns follow-up question text. Uses Haiku (C1, C2). Writes audit row (C3).
+) -> tuple:
+    """Returns (follow_up_question_text, {input_tokens, output_tokens}). Uses Haiku (C1, C2). Writes audit row (C3).
     Falls back to template-based generation if Bedrock is unavailable.
     """
     try:
@@ -60,13 +60,13 @@ async def generate_follow_up(
             rendered_prompt=rendered,
             prompt=rendered,
         )
-        return response_text.strip()
+        return response_text.strip(), {"input_tokens": meta.get("input_tokens", 0), "output_tokens": meta.get("output_tokens", 0)}
     except Exception as e:
         # If Bedrock fails, use fallback generator
         error_msg = str(e)
         if "AccessDeniedException" in error_msg or "INVALID_PAYMENT" in error_msg:
             logger.warning(f"Bedrock follow-up generation failed ({error_msg[:100]}), using fallback generator")
-            return await fallback_generate_follow_up(
+            result = await fallback_generate_follow_up(
                 topic_label=topic_label,
                 original_question=original_question,
                 candidate_answer=candidate_answer,
@@ -74,5 +74,6 @@ async def generate_follow_up(
                 missing_points=missing_points,
                 context_chunks=context_chunks,
             )
+            return result, {"input_tokens": 0, "output_tokens": 0}
         # Re-raise other errors
         raise

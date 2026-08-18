@@ -18,10 +18,10 @@ async def generate_report(session_id: str, orchestrator_state, db) -> dict:
     grade = score_data["overall_grade"]
     
     cost = compute_cost_usd(
-        getattr(s, "haiku_input_tokens", 0),
-        getattr(s, "haiku_output_tokens", 0),
-        getattr(s, "sonnet_input_tokens", 0),
-        getattr(s, "sonnet_output_tokens", 0),
+        getattr(s, "nova_lite_input_tokens", 0),
+        getattr(s, "nova_lite_output_tokens", 0),
+        getattr(s, "nova_pro_input_tokens", 0),
+        getattr(s, "nova_pro_output_tokens", 0),
     )
 
     summary = {
@@ -52,6 +52,18 @@ async def generate_report(session_id: str, orchestrator_state, db) -> dict:
         prompt=rendered,
     )
 
+    # Accumulate report generation tokens (Nova Pro)
+    nova_pro_input_tokens = getattr(s, "nova_pro_input_tokens", 0) + meta.get("input_tokens", 0)
+    nova_pro_output_tokens = getattr(s, "nova_pro_output_tokens", 0) + meta.get("output_tokens", 0)
+    
+    # Recompute cost with all tokens including report generation
+    total_cost = compute_cost_usd(
+        getattr(s, "nova_lite_input_tokens", 0),
+        getattr(s, "nova_lite_output_tokens", 0),
+        nova_pro_input_tokens,
+        nova_pro_output_tokens,
+    )
+
     llm_result = json.loads(text)
     return {
         "session_id": session_id,
@@ -70,6 +82,6 @@ async def generate_report(session_id: str, orchestrator_state, db) -> dict:
             }
             for r in topic_score_rows
         ],
-        "total_cost_usd": cost,
+        "total_cost_usd": total_cost,
         "created_at": "",  # filled by save_report in DB layer
     }

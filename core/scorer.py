@@ -20,14 +20,16 @@ def compute_overall_score(topic_scores: List[float]) -> float:
 
 
 def compute_cost_usd(
-    haiku_input_tokens: int,
-    haiku_output_tokens: int,
-    sonnet_input_tokens: int,
-    sonnet_output_tokens: int,
+    nova_lite_input_tokens: int,
+    nova_lite_output_tokens: int,
+    nova_pro_input_tokens: int,
+    nova_pro_output_tokens: int,
 ) -> float:
-    haiku = (haiku_input_tokens / 1000 * 0.001) + (haiku_output_tokens / 1000 * 0.005)
-    sonnet = (sonnet_input_tokens / 1000 * 0.015) + (sonnet_output_tokens / 1000 * 0.075)
-    return round(haiku + sonnet, 6)
+    # Amazon Nova Lite pricing: $0.00015 per 1K input, $0.0006 per 1K output
+    nova_lite = (nova_lite_input_tokens / 1000 * 0.00015) + (nova_lite_output_tokens / 1000 * 0.0006)
+    # Amazon Nova Pro pricing: $0.0008 per 1K input, $0.0024 per 1K output
+    nova_pro = (nova_pro_input_tokens / 1000 * 0.0008) + (nova_pro_output_tokens / 1000 * 0.0024)
+    return round(nova_lite + nova_pro, 6)
 
 
 def compute_session_scores(topic_score_rows: List[Any]) -> Dict[str, Any]:

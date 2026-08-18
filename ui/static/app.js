@@ -404,7 +404,10 @@ function handleEvalResult(data) {
 
 async function leaveInterview() {
   const reportSessionId = sessionId;
+  console.log("leaveInterview called. sessionId:", reportSessionId);
+  
   if (!reportSessionId) {
+    console.warn("No active session to leave");
     resetToMainPage();
     return;
   }
@@ -435,9 +438,10 @@ async function leaveInterview() {
     }
   }
 
-  // Redirect to report page
+  // Redirect to report page - use captured reportSessionId
   resetToMainPage();
   showNotification("📊 Loading your report...", "info", 1000);
+  console.log("Redirecting to report. Session ID:", reportSessionId);
   setTimeout(() => { window.location.href = `/report/${reportSessionId}`; }, 800);
 }
 

@@ -162,7 +162,9 @@ async def leave_interview(session_id: str, db: AsyncSession = Depends(get_db)):
         raise HTTPException(404, "Session not found or already closed")
 
     old_state = s.state
-    end_session(session_id)
+    # Update state to COMPLETED instead of removing from memory
+    # This allows report generation to still access the session
+    s.state = "COMPLETED"
 
     await update_session_state(db, session_id, "COMPLETED")
     await log_state_transition(

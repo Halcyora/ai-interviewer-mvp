@@ -17,9 +17,9 @@ async def evaluate_answer(
     candidate_answer: str,
     prev_entry_hash: str,
     db,
-) -> dict:
+) -> tuple:
     """
-    Returns {score, reasoning, key_points_covered, missing_points}.
+    Returns ({score, reasoning, key_points_covered, missing_points}, {input_tokens, output_tokens}).
     Key points derived from RAG context chunks — no pre-defined expected_key_points.
     Writes audit row (C3). Uses Haiku (C1, C2).
     Falls back to keyword-based evaluation if Bedrock is unavailable.
@@ -42,17 +42,18 @@ async def evaluate_answer(
             rendered_prompt=rendered,
             prompt=rendered,
         )
-        return json.loads(response_text)
+        return json.loads(response_text), {"input_tokens": meta.get("input_tokens", 0), "output_tokens": meta.get("output_tokens", 0)}
     except Exception as e:
         # If Bedrock fails (payment, access, etc.), use fallback evaluator
         error_msg = str(e)
         if "AccessDeniedException" in error_msg or "INVALID_PAYMENT" in error_msg:
             logger.warning(f"Bedrock evaluation failed ({error_msg[:100]}), using fallback evaluator")
-            return await fallback_evaluate_answer(
+            result = await fallback_evaluate_answer(
                 topic_label=topic_label,
                 question_text=question_text,
                 context_chunks=context_chunks,
                 candidate_answer=candidate_answer,
             )
+            return result, {"input_tokens": 0, "output_tokens": 0}
         # Re-raise other errors
         raise

@@ -47,10 +47,10 @@ class InterviewState:
     topics: List[TopicState]
     current_topic_index: int = 0
     global_turn_index: int = 0       # 0-based, increments after each answer submitted
-    haiku_input_tokens: int = 0
-    haiku_output_tokens: int = 0
-    sonnet_input_tokens: int = 0
-    sonnet_output_tokens: int = 0
+    nova_lite_input_tokens: int = 0
+    nova_lite_output_tokens: int = 0
+    nova_pro_input_tokens: int = 0
+    nova_pro_output_tokens: int = 0
     company: Optional[str] = None
     role: Optional[str] = None
     difficulty: Optional[str] = None
@@ -417,12 +417,16 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
     # Use a stable label fallback so DB writes and prompts always receive a non-empty value.
     label = topic.topic_label or topic.topic or topic.difficulty or topic.topic_id or "Unknown"
 
-    eval_result = await evaluate_answer(
+    eval_result, eval_tokens = await evaluate_answer(
         session_id=s.session_id, turn_id=topic.current_turn_db_id,
         topic_label=label, question_text=topic.current_question,
         context_chunks=topic.context_chunks, candidate_answer=answer_text,
         prev_entry_hash="", db=db,
     )
+
+    # Accumulate token usage (Nova Lite for evaluation)
+    s.nova_lite_input_tokens += eval_tokens.get("input_tokens", 0)
+    s.nova_lite_output_tokens += eval_tokens.get("output_tokens", 0)
 
     score: float = eval_result["score"]
     topic.scores.append(score)
@@ -447,7 +451,7 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
 
     if next_action == "FOLLOW_UP":
         s.state = "FOLLOW_UP"
-        follow_up_text = await generate_follow_up(
+        follow_up_text, fu_tokens = await generate_follow_up(
             session_id=s.session_id, turn_id=s.global_turn_index,
             topic_label=label, original_question=topic.current_question,
             candidate_answer=answer_text, confidence_score=score,
@@ -455,6 +459,11 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
             context_chunks=topic.context_chunks,
             prev_entry_hash="", db=db,
         )
+
+        # Accumulate token usage (Nova Lite for follow-up generation)
+        s.nova_lite_input_tokens += fu_tokens.get("input_tokens", 0)
+        s.nova_lite_output_tokens += fu_tokens.get("output_tokens", 0)
+
         topic.current_question = follow_up_text
         topic.stretch_count += 1
 

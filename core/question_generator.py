@@ -60,4 +60,4 @@ async def generate_questions_for_context(
     }
     out_path = Path("data/questions") / f"{context_name}_questions.json"
     out_path.write_text(json.dumps(questions_data, indent=2), encoding="utf-8")
-    return questions_data
+    return questions_data, {"input_tokens": meta.get("input_tokens", 0), "output_tokens": meta.get("output_tokens", 0)}
