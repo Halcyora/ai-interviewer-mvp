@@ -1,7 +1,11 @@
 import json
+import logging
 from config.settings import settings
 from core.prompts import EVALUATOR
 from core.llm_client import invoke_and_audit_llm
+from core.fallback_evaluator import fallback_evaluate_answer
+
+logger = logging.getLogger(__name__)
 
 
 async def evaluate_answer(
@@ -18,22 +22,37 @@ async def evaluate_answer(
     Returns {score, reasoning, key_points_covered, missing_points}.
     Key points derived from RAG context chunks — no pre-defined expected_key_points.
     Writes audit row (C3). Uses Haiku (C1, C2).
+    Falls back to keyword-based evaluation if Bedrock is unavailable.
     """
-    rendered = EVALUATOR.format(
-        topic_label=topic_label,
-        question_text=question_text,
-        context_chunks=context_chunks,
-        candidate_answer=candidate_answer,
-    )
-    response_text, meta = await invoke_and_audit_llm(
-        db=db,
-        session_id=session_id,
-        turn_id=turn_id,
-        template_id="EVALUATOR",
-        model_id=settings.bedrock_claude_haiku_model_id,
-        temperature=0.0,
-        max_tokens=256,
-        rendered_prompt=rendered,
-        prompt=rendered,
-    )
-    return json.loads(response_text)
+    try:
+        rendered = EVALUATOR.format(
+            topic_label=topic_label,
+            question_text=question_text,
+            context_chunks=context_chunks,
+            candidate_answer=candidate_answer,
+        )
+        response_text, meta = await invoke_and_audit_llm(
+            db=db,
+            session_id=session_id,
+            turn_id=turn_id,
+            template_id="EVALUATOR",
+            model_id=settings.bedrock_claude_haiku_model_id,
+            temperature=0.0,
+            max_tokens=256,
+            rendered_prompt=rendered,
+            prompt=rendered,
+        )
+        return json.loads(response_text)
+    except Exception as e:
+        # If Bedrock fails (payment, access, etc.), use fallback evaluator
+        error_msg = str(e)
+        if "AccessDeniedException" in error_msg or "INVALID_PAYMENT" in error_msg:
+            logger.warning(f"Bedrock evaluation failed ({error_msg[:100]}), using fallback evaluator")
+            return await fallback_evaluate_answer(
+                topic_label=topic_label,
+                question_text=question_text,
+                context_chunks=context_chunks,
+                candidate_answer=candidate_answer,
+            )
+        # Re-raise other errors
+        raise

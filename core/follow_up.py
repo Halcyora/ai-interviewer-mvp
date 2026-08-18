@@ -1,7 +1,11 @@
 import json
+import logging
 from config.settings import settings
 from core.prompts import FOLLOW_UP_GEN
 from core.llm_client import invoke_and_audit_llm
+from core.fallback_follow_up import fallback_generate_follow_up
+
+logger = logging.getLogger(__name__)
 
 
 def should_follow_up(confidence_score: float, stretch_count: int) -> str:
@@ -33,24 +37,42 @@ async def generate_follow_up(
     prev_entry_hash: str,
     db,
 ) -> str:
-    """Returns follow-up question text. Uses Haiku (C1, C2). Writes audit row (C3)."""
-    rendered = FOLLOW_UP_GEN.format(
-        topic_label=topic_label,
-        original_question=original_question,
-        candidate_answer=candidate_answer,
-        confidence_score=confidence_score,
-        missing_points=json.dumps(missing_points),
-        context_chunks=context_chunks,
-    )
-    response_text, meta = await invoke_and_audit_llm(
-        db=db,
-        session_id=session_id,
-        turn_id=turn_id,
-        template_id="FOLLOW_UP_GEN",
-        model_id=settings.bedrock_claude_haiku_model_id,
-        temperature=0.7,
-        max_tokens=200,
-        rendered_prompt=rendered,
-        prompt=rendered,
-    )
-    return response_text.strip()
+    """Returns follow-up question text. Uses Haiku (C1, C2). Writes audit row (C3).
+    Falls back to template-based generation if Bedrock is unavailable.
+    """
+    try:
+        rendered = FOLLOW_UP_GEN.format(
+            topic_label=topic_label,
+            original_question=original_question,
+            candidate_answer=candidate_answer,
+            confidence_score=confidence_score,
+            missing_points=json.dumps(missing_points),
+            context_chunks=context_chunks,
+        )
+        response_text, meta = await invoke_and_audit_llm(
+            db=db,
+            session_id=session_id,
+            turn_id=turn_id,
+            template_id="FOLLOW_UP_GEN",
+            model_id=settings.bedrock_claude_haiku_model_id,
+            temperature=0.7,
+            max_tokens=200,
+            rendered_prompt=rendered,
+            prompt=rendered,
+        )
+        return response_text.strip()
+    except Exception as e:
+        # If Bedrock fails, use fallback generator
+        error_msg = str(e)
+        if "AccessDeniedException" in error_msg or "INVALID_PAYMENT" in error_msg:
+            logger.warning(f"Bedrock follow-up generation failed ({error_msg[:100]}), using fallback generator")
+            return await fallback_generate_follow_up(
+                topic_label=topic_label,
+                original_question=original_question,
+                candidate_answer=candidate_answer,
+                confidence_score=confidence_score,
+                missing_points=missing_points,
+                context_chunks=context_chunks,
+            )
+        # Re-raise other errors
+        raise
