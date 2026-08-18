@@ -105,6 +105,38 @@ async def get_topic_scores(db: AsyncSession, session_id: str) -> list:
     return result.scalars().all()
 
 
+async def get_session_token_usage(db: AsyncSession, session_id: str) -> dict:
+    """Retrieve total token usage from audit log for a session, separated by model."""
+    # Get Nova Lite tokens (EVALUATOR and FOLLOW_UP_GEN templates)
+    lite_result = await db.execute(
+        select(
+            func.sum(LLMAuditLog.input_tokens).label("total_input"),
+            func.sum(LLMAuditLog.output_tokens).label("total_output"),
+        )
+        .where(LLMAuditLog.session_id == session_id)
+        .where(LLMAuditLog.model_id.contains("lite"))  # Nova Lite model ID
+    )
+    lite_row = lite_result.one()
+    
+    # Get Nova Pro tokens (REPORT_GEN template and any Pro-specific templates)
+    pro_result = await db.execute(
+        select(
+            func.sum(LLMAuditLog.input_tokens).label("total_input"),
+            func.sum(LLMAuditLog.output_tokens).label("total_output"),
+        )
+        .where(LLMAuditLog.session_id == session_id)
+        .where(LLMAuditLog.model_id.contains("pro"))  # Nova Pro model ID
+    )
+    pro_row = pro_result.one()
+    
+    return {
+        "nova_lite_input_tokens": lite_row.total_input or 0,
+        "nova_lite_output_tokens": lite_row.total_output or 0,
+        "nova_pro_input_tokens": pro_row.total_input or 0,
+        "nova_pro_output_tokens": pro_row.total_output or 0,
+    }
+
+
 # ── Report ────────────────────────────────────────────────────────────────────
 
 async def save_report(db: AsyncSession, report: dict) -> Report:

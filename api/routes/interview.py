@@ -5,10 +5,11 @@ from pathlib import Path
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from db.database import get_db
-from db.crud import create_session, update_session_state, log_state_transition
+from db.crud import create_session, update_session_state, log_state_transition, upsert_topic_score
 from models.interview import AnswerIn, EvaluationOut
 from models.session import SessionCreate
 from core.orchestrator import init_session, get_next_question, submit_answer, load_session, end_session
+from core.scorer import compute_topic_score, score_to_grade
 from rag.vectorstore import get_collection
 
 router = APIRouter()
@@ -160,6 +161,18 @@ async def leave_interview(session_id: str, db: AsyncSession = Depends(get_db)):
     s = load_session(session_id)
     if not s:
         raise HTTPException(404, "Session not found or already closed")
+
+    # Save current topic score before marking session as COMPLETED
+    if s.current_topic_index < len(s.topics):
+        topic = s.topics[s.current_topic_index]
+        if topic.scores:  # Only save if there are scores for this topic
+            label = topic.topic_label or topic.topic or topic.difficulty or topic.topic_id or "Unknown"
+            topic_avg = compute_topic_score(topic.scores)
+            grade = score_to_grade(topic_avg)
+            await upsert_topic_score(
+                db, s.session_id, topic.topic_id, label,
+                len(topic.scores), topic_avg, grade,
+            )
 
     old_state = s.state
     # Update state to COMPLETED instead of removing from memory

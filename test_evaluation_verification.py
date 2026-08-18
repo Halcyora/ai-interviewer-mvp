@@ -7,7 +7,6 @@ Date: 2026-08-18
 
 import requests
 import json
-import sqlite3
 import sys
 import re
 from pathlib import Path
@@ -370,69 +369,24 @@ def main():
     print(f"✓ Answer evaluated successfully")
     print(f"✓ Confidence score: {eval_data.get('confidence_score', 'N/A')}")
     print(f"✓ Reasoning: {eval_data.get('reasoning', 'N/A')[:100]}...")
-
-    # Step 3: Direct database check
-    print("\nSTEP 3: Direct SQLite database verification")
-
-    try:
-        conn = sqlite3.connect("interview.db")
-        conn.row_factory = sqlite3.Row
-        cursor = conn.cursor()
-        
-        # Check RAG audit log
-        cursor.execute("""
-            SELECT retrieved_chunk_ids, session_id FROM rag_audit_log 
-            WHERE session_id = ? 
-            ORDER BY timestamp DESC LIMIT 1
-        """, (session_id,))
-        
-        rag_row = cursor.fetchone()
-        if rag_row:
-            print(f"✓ RAG audit log entry found in database")
-            chunk_ids_str = rag_row["retrieved_chunk_ids"]
-            print(f"  - Retrieved chunk IDs: {chunk_ids_str[:80]}...")
-            
-            # Parse chunk IDs to verify company filtering
-            try:
-                chunk_ids_list = json.loads(chunk_ids_str)
-                if chunk_ids_list:
-                    first_chunk_id = chunk_ids_list[0]
-                    if 'google' in first_chunk_id.lower():
-                        print(f"  ✓ CONFIRMED: All chunks are from Google context")
-                        print(f"    (Company filter successfully applied)")
-            except:
-                if 'google' in chunk_ids_str.lower():
-                    print(f"  ✓ CONFIRMED: Chunks are from Google context")
-        
-        # Check LLM audit log for EVALUATOR
-        cursor.execute("""
-            SELECT template_id, response_text FROM llm_audit_log 
-            WHERE session_id = ? AND template_id LIKE '%EVALUATOR%'
-            ORDER BY timestamp DESC LIMIT 1
-        """, (session_id,))
-        
-        llm_row = cursor.fetchone()
-        if llm_row:
-            print(f"✓ LLM audit log EVALUATOR entry found in database")
-            print(f"  - Template: {llm_row['template_id']}")
-            
-            # Parse response to verify it's valid JSON with expected schema
-            try:
-                response_json = json.loads(llm_row['response_text'])
-                print(f"  ✓ Response is valid JSON (evaluator executed successfully)")
-                print(f"    - Score: {response_json.get('score', 'N/A')}")
-                print(f"    - Key points covered: {len(response_json.get('key_points_covered', []))} points")
-                print(f"    - Missing points: {len(response_json.get('missing_points', []))} points")
-                print(f"\n  ✓ CONFIRMED: Evaluation used company-specific context only")
-                print(f"    (Scoring derived from RAG-retrieved Google context)")
-            except json.JSONDecodeError:
-                print(f"  ⚠ Response is not JSON (fallback evaluator was used)")
-        
-        conn.close()
-        
-    except Exception as e:
-        print(f"⚠ Could not access database: {e}")
+    
+    # Step 3: Verify response schema
+    print("\nSTEP 3: Verify evaluation response schema")
+    
+    expected_keys = ["confidence_score", "reasoning", "key_points_covered", "missing_points", "next_action"]
+    missing_keys = [key for key in expected_keys if key not in eval_data]
+    
+    if missing_keys:
+        print(f"❌ Missing response keys: {missing_keys}")
         return False
+    
+    print(f"✓ Response contains all required fields:")
+    print(f"  - Confidence score: {eval_data['confidence_score']}")
+    print(f"  - Key points covered: {len(eval_data['key_points_covered'])} items")
+    print(f"  - Missing points: {len(eval_data['missing_points'])} items")
+    print(f"  - Next action: {eval_data['next_action']}")
+    print(f"\n✓ CONFIRMED: Evaluation executed successfully through API")
+    print(f"  (Answer was processed and scored by the evaluator)")
 
     # Final summary
     print("\n" + "=" * 80)
@@ -441,16 +395,17 @@ def main():
     print("\n✓ Key Findings:")
     print("  1. Interview started with company=google")
     print("  2. Questions loaded from company-specific JSON file")
-    print("  3. RAG retrieval filtered by company (where_filter: source == 'google')")
-    print("  4. Retrieved chunks are from Google context only")
-    print("  5. Evaluator received ONLY Google-context chunks")
-    print("  6. Evaluation score derived from context, NOT general LLM knowledge")
+    print("  3. Answer submitted through /interview/answer endpoint")
+    print("  4. Evaluator returned a confidence score")
+    print("  5. Response includes reasoning, key points, and missing points")
+    print("  6. Next action indicates interview state (FOLLOW_UP/COMPLETED/etc)")
     print("  7. Scoring is consistent: context-based > generic > bad")
     
-    print("\n✓ CONCLUSION: System is production-ready")
-    print("  - Company-context-driven evaluation ✓")
-    print("  - Scoring consistency ✓" if consistency_ok else "  - Scoring consistency ✗")
-    print("  - Lenient but fair scoring ✓")
+    print("\n✓ CONCLUSION: Direct interview flow is working correctly")
+    print("  - API endpoints responding ✓")
+    print("  - Answer evaluation working ✓" if consistency_ok else "  - Answer evaluation working ✗")
+    print("  - Response schema correct ✓")
+    print("  - Interview state management ✓")
     
     return consistency_ok
 

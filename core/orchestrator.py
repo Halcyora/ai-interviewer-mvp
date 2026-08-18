@@ -239,6 +239,17 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
         }
         await update_turn_answer(db, topic.current_turn_db_id, answer_text, answer_mode, eval_result)
         s.global_turn_index += 1
+        
+        # Save current topic score before marking session as COMPLETED
+        topic.scores.append(0.0)
+        label = topic.topic_label or topic.topic or topic.difficulty or topic.topic_id or "Unknown"
+        topic_avg = compute_topic_score(topic.scores)
+        grade = score_to_grade(topic_avg)
+        await upsert_topic_score(
+            db, s.session_id, topic.topic_id, label,
+            len(topic.scores), topic_avg, grade,
+        )
+        
         s.state = "COMPLETED"
         await log_state_transition(
             db, s.session_id, "EVALUATING", "COMPLETED", "CANDIDATE_IDK_ENDED", 0.0, topic.stretch_count
@@ -266,6 +277,17 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
             }
             await update_turn_answer(db, topic.current_turn_db_id, answer_text, answer_mode, eval_result)
             s.global_turn_index += 1
+            
+            # Save current topic score before marking session as COMPLETED
+            topic.scores.append(0.0)
+            label = topic.topic_label or topic.topic or topic.difficulty or topic.topic_id or "Unknown"
+            topic_avg = compute_topic_score(topic.scores)
+            grade = score_to_grade(topic_avg)
+            await upsert_topic_score(
+                db, s.session_id, topic.topic_id, label,
+                len(topic.scores), topic_avg, grade,
+            )
+            
             s.state = "COMPLETED"
             await log_state_transition(
                 db, s.session_id, "EVALUATING", "COMPLETED", "DIFFERENT_QUESTION_LIMIT_REACHED", 0.0, topic.stretch_count
@@ -340,6 +362,17 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
         }
         await update_turn_answer(db, topic.current_turn_db_id, answer_text, answer_mode, eval_result)
         s.global_turn_index += 1
+        
+        # Save current topic score before marking session as COMPLETED
+        topic.scores.append(0.0)
+        label = topic.topic_label or topic.topic or topic.difficulty or topic.topic_id or "Unknown"
+        topic_avg = compute_topic_score(topic.scores)
+        grade = score_to_grade(topic_avg)
+        await upsert_topic_score(
+            db, s.session_id, topic.topic_id, label,
+            len(topic.scores), topic_avg, grade,
+        )
+        
         s.state = "COMPLETED"
         await log_state_transition(
             db, s.session_id, "EVALUATING", "COMPLETED", "CANDIDATE_ENDED", 0.0, topic.stretch_count
@@ -429,6 +462,14 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
     s.global_turn_index += 1
 
     if s.questions_asked >= s.max_questions:
+        # Finalize current topic score before marking session as COMPLETED
+        topic_avg = compute_topic_score(topic.scores)
+        grade = score_to_grade(topic_avg)
+        await upsert_topic_score(
+            db, s.session_id, topic.topic_id, label,
+            len(topic.scores), topic_avg, grade,
+        )
+        
         s.state = "COMPLETED"
         await log_state_transition(
             db, s.session_id, "EVALUATING", "COMPLETED", "MAX_QUESTIONS_REACHED", score, topic.stretch_count
