@@ -42,18 +42,27 @@ async def evaluate_answer(
             rendered_prompt=rendered,
             prompt=rendered,
         )
-        return json.loads(response_text), {"input_tokens": meta.get("input_tokens", 0), "output_tokens": meta.get("output_tokens", 0)}
-    except Exception as e:
-        # If Bedrock fails (payment, access, etc.), use fallback evaluator
-        error_msg = str(e)
-        if "AccessDeniedException" in error_msg or "INVALID_PAYMENT" in error_msg:
-            logger.warning(f"Bedrock evaluation failed ({error_msg[:100]}), using fallback evaluator")
+        try:
+            parsed = json.loads(response_text)
+            return parsed, {"input_tokens": meta.get("input_tokens", 0), "output_tokens": meta.get("output_tokens", 0)}
+        except json.JSONDecodeError:
+            logger.warning("Evaluator returned non-JSON response; using fallback evaluator")
             result = await fallback_evaluate_answer(
                 topic_label=topic_label,
                 question_text=question_text,
                 context_chunks=context_chunks,
                 candidate_answer=candidate_answer,
             )
-            return result, {"input_tokens": 0, "output_tokens": 0}
-        # Re-raise other errors
-        raise
+            return result, {"input_tokens": meta.get("input_tokens", 0), "output_tokens": meta.get("output_tokens", 0)}
+    except Exception as e:
+        # If Bedrock or parsing fails, use fallback evaluator to keep interview flow stable.
+        error_msg = str(e)
+        logger.error(f"Evaluation provider failed! Exception: {type(e).__name__}: {error_msg}")
+        logger.warning(f"Using fallback evaluator instead")
+        result = await fallback_evaluate_answer(
+            topic_label=topic_label,
+            question_text=question_text,
+            context_chunks=context_chunks,
+            candidate_answer=candidate_answer,
+        )
+        return result, {"input_tokens": 0, "output_tokens": 0}

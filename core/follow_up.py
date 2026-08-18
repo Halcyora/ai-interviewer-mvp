@@ -12,28 +12,28 @@ def should_follow_up(confidence_score: float, stretch_count: int) -> str:
     """
     Determines whether to ask a follow-up or move to the next topic.
     
-    Scoring logic:
-    - score < 0.4: Incorrect/irrelevant → NEXT_TOPIC (no follow-up)
-    - 0.4 <= score <= 0.8: Partial/incomplete → FOLLOW_UP (if under limit, max 2 follow-ups)
-    - score > 0.8: Comprehensive → NEXT_TOPIC (no follow-up needed)
+    Scoring logic (lenient but fair):
+    - score < 0.3: Completely incorrect → NEXT_TOPIC (no follow-up)
+    - 0.3 <= score <= 0.7: Partial/good understanding → FOLLOW_UP (if under limit)
+    - score > 0.7: Strong understanding → NEXT_TOPIC (no follow-up needed)
     
     Args:
         confidence_score: Float between 0.0 and 1.0
         stretch_count: 1-based counter (1=seed Q, 2=1st follow-up, 3=2nd follow-up)
     
     Returns:
-        'FOLLOW_UP' if score in 0.4-0.8 range and not exceeded max follow-ups
+        'FOLLOW_UP' if score in 0.3-0.7 range and not exceeded max follow-ups
         'NEXT_TOPIC' otherwise
     """
-    # Score < 0.4: irrelevant, move to next topic
-    if confidence_score < 0.4:
+    # Score < 0.3: completely incorrect/off-topic, move to next topic
+    if confidence_score < 0.3:
         return "NEXT_TOPIC"
     
-    # Score > 0.8: comprehensive, move to next topic
-    if confidence_score > 0.8:
+    # Score > 0.7: strong understanding, move to next topic
+    if confidence_score > 0.7:
         return "NEXT_TOPIC"
     
-    # Score 0.4-0.8: partial/incomplete, ask follow-up if within limit
+    # Score 0.3-0.7: partial/good understanding, ask follow-up if within limit
     # stretch_count < 3 means we can do at most 2 follow-ups (on top of seed question)
     if stretch_count < settings.max_stretch_count:
         return "FOLLOW_UP"

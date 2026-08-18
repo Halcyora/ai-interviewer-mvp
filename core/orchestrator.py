@@ -440,6 +440,7 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
             "missing_points": eval_result["missing_points"],
             "next_action": "COMPLETED",
             "next_question": None,
+            "token_usage": eval_tokens,
         }
 
     next_action = should_follow_up(score, topic.stretch_count)
@@ -488,6 +489,7 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
                 "question_type": "FOLLOW_UP",
                 "total_topics": len(s.topics),
             },
+            "token_usage": {"input_tokens": eval_tokens.get("input_tokens", 0) + fu_tokens.get("input_tokens", 0), "output_tokens": eval_tokens.get("output_tokens", 0) + fu_tokens.get("output_tokens", 0)},
         }
     else:
         # Finalise topic score and advance
@@ -512,6 +514,7 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
                 "missing_points": eval_result["missing_points"],
                 "next_action": "COMPLETED",
                 "next_question": None,
+                "token_usage": eval_tokens,
             }
         else:
             s.state = "NEXT_TOPIC"
@@ -527,4 +530,5 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
                 "missing_points": eval_result["missing_points"],
                 "next_action": "NEXT_TOPIC",
                 "next_question": next_q,
+                "token_usage": eval_tokens,
             }

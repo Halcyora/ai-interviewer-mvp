@@ -1,7 +1,8 @@
 from typing import List, Dict, Any
 
+# Lenient grading thresholds (slightly lowered for fairness)
 # Descending threshold order — first match wins
-_GRADE_MAP = [(0.8, "A"), (0.6, "B"), (0.4, "C"), (0.2, "D"), (0.0, "F")]
+_GRADE_MAP = [(0.7, "A"), (0.5, "B"), (0.3, "C"), (0.1, "D"), (0.0, "F")]
 
 
 def score_to_grade(score: float) -> str:

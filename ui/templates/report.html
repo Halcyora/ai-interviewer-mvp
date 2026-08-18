@@ -69,6 +69,18 @@
     }
 
     async function loadReport() {
+      if (!sessionId || sessionId === "null" || sessionId === "undefined") {
+        document.getElementById("narrative").innerHTML =
+          "Invalid report link (missing session ID). Please go back home and start or resume an interview.";
+        document.getElementById("strengths-list").innerHTML =
+          "<li style='color: var(--text-muted);'>No report data available for this link.</li>";
+        document.getElementById("gaps-list").innerHTML =
+          "<li style='color: var(--text-muted);'>No report data available for this link.</li>";
+        document.getElementById("topics-grid").innerHTML =
+          "<p style='grid-column: 1/-1; color: var(--text-muted);'>No topic data available.</p>";
+        return;
+      }
+
       // Try to generate on first load if possible. Existing reports are returned as-is.
       const generateRes = await fetch(`/reports/generate/${sessionId}`, { method: "POST" }).catch(() => null);
       if (generateRes && !generateRes.ok && generateRes.status !== 400) {
