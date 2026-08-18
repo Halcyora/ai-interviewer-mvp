@@ -354,11 +354,13 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
         }
 
     if _is_unsure_response(answer_text):
+        # Candidate signaled uncertainty (I don't know, unsure, etc.)
+        # Score 0.2 indicates low confidence → move to next topic per new logic
         eval_result = {
-            "score": 0.3,
-            "reasoning": "Candidate signaled uncertainty, so a similar question is being asked.",
+            "score": 0.2,
+            "reasoning": "Candidate indicated uncertainty. Moving to the next topic.",
             "key_points_covered": [],
-            "missing_points": ["Provide a concrete explanation with one example."],
+            "missing_points": [],
         }
         await update_turn_answer(db, topic.current_turn_db_id, answer_text, answer_mode, eval_result)
         s.global_turn_index += 1
@@ -366,52 +368,45 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
         if s.questions_asked >= s.max_questions:
             s.state = "COMPLETED"
             await log_state_transition(
-                db, s.session_id, "EVALUATING", "COMPLETED", "MAX_QUESTIONS_REACHED", 0.3, topic.stretch_count
+                db, s.session_id, "EVALUATING", "COMPLETED", "MAX_QUESTIONS_REACHED", 0.2, topic.stretch_count
             )
             return {
-                "confidence_score": 0.3,
+                "confidence_score": 0.2,
                 "reasoning": "Maximum question limit reached.",
                 "key_points_covered": [],
-                "missing_points": ["Provide a concrete explanation with one example."],
+                "missing_points": [],
                 "next_action": "COMPLETED",
                 "next_question": None,
             }
 
-        s.state = "FOLLOW_UP"
-        follow_up_text = _build_similar_question(topic)
-        topic.current_question = follow_up_text
-        topic.stretch_count += 1
+        # Move to next topic (no follow-up for uncertain responses)
+        s.current_topic_index += 1
+        if s.current_topic_index >= len(s.topics):
+            s.state = "COMPLETED"
+            await log_state_transition(
+                db, s.session_id, "EVALUATING", "COMPLETED", "ALL_TOPICS_EXHAUSTED", 0.2, topic.stretch_count
+            )
+            return {
+                "confidence_score": 0.2,
+                "reasoning": "All topics have been covered.",
+                "key_points_covered": [],
+                "missing_points": [],
+                "next_action": "COMPLETED",
+                "next_question": None,
+            }
 
-        turn_db_id = await create_turn(
-            db,
-            s.session_id,
-            s.global_turn_index,
-            topic.topic_id,
-            topic.stretch_count - 1,
-            follow_up_text,
-            "FOLLOW_UP",
-        )
-        topic.current_turn_db_id = turn_db_id
-        s.questions_asked += 1
-        s.state = "AWAITING_ANSWER"
+        s.state = "NEXT_TOPIC"
         await log_state_transition(
-            db, s.session_id, "FOLLOW_UP", "AWAITING_ANSWER", "SIMILAR_QUESTION_GENERATED", 0.3, topic.stretch_count
+            db, s.session_id, "EVALUATING", "NEXT_TOPIC", "TOPIC_FINISHED_UNSURE", 0.2, topic.stretch_count
         )
+        next_q = await get_next_question(session_id, db)
         return {
-            "confidence_score": 0.3,
+            "confidence_score": 0.2,
             "reasoning": eval_result["reasoning"],
             "key_points_covered": [],
-            "missing_points": eval_result["missing_points"],
-            "next_action": "FOLLOW_UP",
-            "next_question": {
-                "session_id": s.session_id,
-                "turn_index": s.global_turn_index,
-                "topic_id": topic.topic_id,
-                "stretch_index": topic.stretch_count - 1,
-                "question_text": follow_up_text,
-                "question_type": "FOLLOW_UP",
-                "total_topics": len(s.topics),
-            },
+            "missing_points": [],
+            "next_action": "NEXT_TOPIC",
+            "next_question": next_q,
         }
 
     # Use a stable label fallback so DB writes and prompts always receive a non-empty value.

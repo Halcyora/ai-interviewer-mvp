@@ -17,8 +17,10 @@ class Settings(BaseSettings):
     top_k: int = 5
     chunk_size: int = 512
     chunk_overlap: int = 50
+    # Thresholds for follow-up decision (0.4-0.8 range triggers follow-up)
     follow_up_threshold_low: float = 0.4
     follow_up_threshold_high: float = 0.8
+    # Max stretch count: 1 (seed) + 2 (follow-ups) = 3 total attempts per topic
     max_stretch_count: int = 3
     audio_silence_timeout_sec: float = 2.0
     log_level: str = "INFO"

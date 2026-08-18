@@ -1,5 +1,5 @@
-# Haiku: evaluation, follow-up generation  (C1: fast + C2: cheap)
-# Sonnet: question generation from context + report (quality)
+# Nova lite: evaluation, follow-up generation  (C1: fast + C2: cheap)
+# Nova pro: question generation from context + report (quality)
 # Seed questions are served directly from JSON — no LLM call (C1/C2 zero cost)
 # Key points are now derived from RAG context chunks, not pre-defined
 
@@ -21,10 +21,10 @@ Evaluate and return ONLY valid JSON matching this exact schema:
 }}
 
 Scoring rubric:
-  0.0-0.3 -> Incorrect or irrelevant
-  0.4-0.6 -> Partial, missing key concepts
-  0.6-0.8 -> Good but incomplete
-  0.8-1.0 -> Comprehensive and accurate
+  0.0-0.3 -> Incorrect or irrelevant (no follow-up, move to next topic)
+  0.4-0.6 -> Partial, missing key concepts (ask clarifying follow-up)
+  0.6-0.8 -> Good but incomplete (ask clarifying follow-up)
+  0.8-1.0 -> Comprehensive and accurate (move to next topic)
 
 Return ONLY the JSON object. No markdown fences, no preamble.
 """
