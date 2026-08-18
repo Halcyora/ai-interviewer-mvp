@@ -6,6 +6,9 @@ let mediaRecorder = null;
 let isInterviewActive = false;
 let lockedDifficulty = "";
 let submitRequestToken = 0;
+let interviewStartTime = null;
+let interviewTimerInterval = null;
+const MAX_INTERVIEW_DURATION_MS = 10 * 60 * 1000; // 10 minutes
 
 const $ = id => document.getElementById(id);
 
@@ -106,6 +109,11 @@ function resetToMainPage() {
   if (ws && ws.readyState === WebSocket.OPEN) {
     ws.close();
   }
+  if (interviewTimerInterval) {
+    clearInterval(interviewTimerInterval);
+    interviewTimerInterval = null;
+  }
+  interviewStartTime = null;
 
   sessionId = null;
   // Invalidate in-flight submit responses so they cannot repopulate UI after leaving.
@@ -123,6 +131,7 @@ function resetToMainPage() {
   $("start-btn").disabled = false;
   $("context-select").hidden = false;
   $("difficulty-select").hidden = false;
+  $("timer-container").hidden = true;
 
   $("text-answer").value = "";
   $("live-transcript").textContent = "";
@@ -167,7 +176,14 @@ async function startInterview() {
   $("start-btn").hidden = true;
   $("context-select").hidden = true;
   $("difficulty-select").hidden = true;
-  displayQuestion(data.first_question);
+  $("timer-container").hidden = false;
+  
+  // Start 10-minute timer
+  interviewStartTime = Date.now();
+  if (interviewTimerInterval) clearInterval(interviewTimerInterval);
+  interviewTimerInterval = setInterval(updateTimer, 1000);
+  updateTimer();
+    displayQuestion(data.first_question);
   updateProgress(0, data.first_question.total_topics);
 }
 
@@ -187,6 +203,27 @@ function updateProgress(done, total) {
   const pct = total > 0 ? (done / total) * 100 : 0;
   $("progress-fill").style.width = pct + "%";
   $("progress-label").textContent = `${done} / ${total} topics`;
+}
+
+function updateTimer() {
+  if (!interviewStartTime) return;
+  const elapsed = Date.now() - interviewStartTime;
+  const remaining = Math.max(0, MAX_INTERVIEW_DURATION_MS - elapsed);
+  const minutes = Math.floor(remaining / 60000);
+  const seconds = Math.floor((remaining % 60000) / 1000);
+  const timeStr = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  
+  const timerEl = $("interview-timer");
+  if (timerEl) {
+    timerEl.textContent = timeStr;
+    timerEl.style.color = remaining < 60000 ? "#ef4444" : "inherit";
+  }
+  
+  // Auto-end interview if time is up
+  if (remaining === 0 && isInterviewActive) {
+    alert("Interview time limit (10 minutes) reached. Ending interview.");
+    leaveInterview();
+  }
 }
 
 async function submitTextAnswer() {
@@ -246,10 +283,16 @@ function handleEvalResult(data) {
     setInterviewActive(false);
     $("answer-section").hidden = true;
     $("leave-btn").hidden = true;
+    if (interviewTimerInterval) {
+      clearInterval(interviewTimerInterval);
+      interviewTimerInterval = null;
+    }
     localStorage.removeItem("interviewSessionId");
     setTimeout(() => { window.location.href = `/report/${sessionId}`; }, 2000);
   } else if (data.next_question) {
     currentTurnIndex = data.next_question.turn_index;
+    // Update progress bar with new question index
+    updateProgress(data.next_question.turn_index, totalTopics);
     setTimeout(() => displayQuestion(data.next_question), 1500);
   }
 }
@@ -257,6 +300,12 @@ function handleEvalResult(data) {
 async function leaveInterview() {
   if (!sessionId) {
     resetToMainPage();
+    return;
+  }
+
+  // Show confirmation modal
+  const confirmed = confirm("End interview? You'll see your feedback report.");
+  if (!confirmed) {
     return;
   }
 
@@ -271,13 +320,15 @@ async function leaveInterview() {
     }
   } catch (e) {
     if (e && e.name === "AbortError") {
-      alert("Leave request timed out. Returning to main page.");
+      alert("Leave request timed out. Redirecting to report.");
     } else {
       console.error("Leave interview request failed:", e);
     }
   }
 
+  // Redirect to report page
   resetToMainPage();
+  setTimeout(() => { window.location.href = `/report/${sessionId}`; }, 500);
 }
 
 function startAudioCapture() {

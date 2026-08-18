@@ -21,13 +21,13 @@ def _validate_bedrock_settings() -> None:
         for model_id in [settings.bedrock_nova_lite_model_id, settings.bedrock_nova_pro_model_id]
         if model_id
     )
-    if uses_nova and not settings.bedrock_text_inference_profile_id:
+    if uses_nova and not settings.bedrock_inference_profile_id:
         logger.warning(
-            "BEDROCK_TEXT_INFERENCE_PROFILE_ID is not set while Nova text models are configured. "
+            "BEDROCK_INFERENCE_PROFILE_ID is not set while Nova text models are configured. "
             "Answer evaluation may fail unless your account supports on-demand throughput for the model."
         )
 
-    if settings.bedrock_text_inference_profile_id:
+    if settings.bedrock_inference_profile_id:
         logger.info("Using Bedrock inference profile for text models.")
 
 

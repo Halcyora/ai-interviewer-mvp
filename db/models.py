@@ -18,6 +18,7 @@ class InterviewSession(Base):
     overall_score = Column(Float, nullable=True)
     overall_grade = Column(String, nullable=True)
     estimated_cost_usd = Column(Float, default=0.0)
+    different_question_count = Column(Integer, default=0)  # Track "ask different question" requests
 
 
 class Turn(Base):

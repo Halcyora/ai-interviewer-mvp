@@ -26,7 +26,7 @@ try:
         print("2. Select 'Inference profiles' (or 'Provisioned throughput' in some regions)")
         print("3. Create a profile that includes: amazon.nova-2-lite-v1:0")
         print("4. Copy the profile ARN and add to .env as:")
-        print("   BEDROCK_TEXT_INFERENCE_PROFILE_ID=<your-profile-arn>")
+        print("   BEDROCK_INFERENCE_PROFILE_ID=<your-profile-arn>")
     else:
         for profile in profiles:
             print(f"\nProfile Name: {profile.get('inferenceProfileName')}")

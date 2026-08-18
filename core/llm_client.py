@@ -22,7 +22,7 @@ async def invoke_bedrock(
 
     Args:
         prompt: The prompt to send to the model
-        model_id: Bedrock model ID (e.g., settings.bedrock_nova_lite_model_id)
+        model_id: Bedrock model ID (e.g., settings.bedrock_nova_lite_model_id or settings.bedrock_nova_pro_model_id)
         max_tokens: Maximum tokens in response
         temperature: Model temperature (0.0 to 1.0)
 
@@ -30,7 +30,7 @@ async def invoke_bedrock(
         Tuple of (response_text, {input_tokens, output_tokens, latency_ms})
     """
     client = get_bedrock_runtime()
-    resolved_model_id = settings.bedrock_text_inference_profile_id or model_id
+    resolved_model_id = settings.bedrock_inference_profile_id or model_id
     
     # Determine request format based on model provider
     if "claude" in model_id.lower():
@@ -72,7 +72,7 @@ async def invoke_bedrock(
         if "on-demand throughput isn\u2019t supported" in msg or "on-demand throughput isn't supported" in msg:
             raise RuntimeError(
                 "Bedrock model invocation failed because on-demand throughput is not supported. "
-                "Set BEDROCK_TEXT_INFERENCE_PROFILE_ID in .env to an inference profile ID/ARN "
+                "Set BEDROCK_INFERENCE_PROFILE_ID in .env to an inference profile ID/ARN "
                 "that includes your configured model."
             ) from exc
         raise

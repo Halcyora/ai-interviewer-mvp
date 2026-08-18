@@ -15,6 +15,7 @@ import random
 from core.evaluator import evaluate_answer
 from core.follow_up import should_follow_up, generate_follow_up
 from core.scorer import compute_topic_score, score_to_grade
+from core.answer_detection import is_pure_idk_answer, contains_different_question_request
 from rag.retriever import retrieve
 from db.crud import (
     create_turn, update_turn_answer, upsert_topic_score,
@@ -55,6 +56,7 @@ class InterviewState:
     difficulty: Optional[str] = None
     max_questions: int = 10
     questions_asked: int = 0
+    different_question_count: int = 0  # Track "ask different question" requests (max 2 allowed)
 
 
 # Module-level session registry — one entry per active session
@@ -226,6 +228,108 @@ async def submit_answer(session_id: str, answer_text: str, answer_mode: str, db)
     await log_state_transition(
         db, s.session_id, "AWAITING_ANSWER", "EVALUATING", "ANSWER_SUBMITTED", None, None
     )
+
+    # Check for pure "idk" / "I don't know" response → end interview
+    if is_pure_idk_answer(answer_text):
+        eval_result = {
+            "score": 0.0,
+            "reasoning": "Candidate indicated they don't know and ended the interview.",
+            "key_points_covered": [],
+            "missing_points": [],
+        }
+        await update_turn_answer(db, topic.current_turn_db_id, answer_text, answer_mode, eval_result)
+        s.global_turn_index += 1
+        s.state = "COMPLETED"
+        await log_state_transition(
+            db, s.session_id, "EVALUATING", "COMPLETED", "CANDIDATE_IDK_ENDED", 0.0, topic.stretch_count
+        )
+        return {
+            "confidence_score": 0.0,
+            "reasoning": "You indicated you don't know. Interview has been ended. View your feedback report below.",
+            "key_points_covered": [],
+            "missing_points": [],
+            "next_action": "COMPLETED",
+            "next_question": None,
+        }
+
+    # Check for "ask different question" request
+    if contains_different_question_request(answer_text):
+        s.different_question_count += 1
+        
+        # 3rd request → end interview
+        if s.different_question_count >= 3:
+            eval_result = {
+                "score": 0.0,
+                "reasoning": f"Candidate requested a different question for the 3rd time. Interview ended.",
+                "key_points_covered": [],
+                "missing_points": [],
+            }
+            await update_turn_answer(db, topic.current_turn_db_id, answer_text, answer_mode, eval_result)
+            s.global_turn_index += 1
+            s.state = "COMPLETED"
+            await log_state_transition(
+                db, s.session_id, "EVALUATING", "COMPLETED", "DIFFERENT_QUESTION_LIMIT_REACHED", 0.0, topic.stretch_count
+            )
+            return {
+                "confidence_score": 0.0,
+                "reasoning": "You've reached the limit for different questions. Interview has been ended.",
+                "key_points_covered": [],
+                "missing_points": [],
+                "next_action": "COMPLETED",
+                "next_question": None,
+            }
+        
+        # 1st or 2nd request → grant it
+        eval_result = {
+            "score": 0.0,
+            "reasoning": f"Candidate requested a different question (request {s.different_question_count} of 2 allowed).",
+            "key_points_covered": [],
+            "missing_points": [],
+        }
+        await update_turn_answer(db, topic.current_turn_db_id, answer_text, answer_mode, eval_result)
+        s.global_turn_index += 1
+
+        if s.questions_asked >= s.max_questions:
+            s.state = "COMPLETED"
+            await log_state_transition(
+                db, s.session_id, "EVALUATING", "COMPLETED", "MAX_QUESTIONS_REACHED", 0.0, topic.stretch_count
+            )
+            return {
+                "confidence_score": 0.0,
+                "reasoning": "Maximum question limit reached.",
+                "key_points_covered": [],
+                "missing_points": [],
+                "next_action": "COMPLETED",
+                "next_question": None,
+            }
+
+        # Move to next topic for a fresh question
+        s.current_topic_index += 1
+        if s.current_topic_index >= len(s.topics):
+            s.state = "COMPLETED"
+            await log_state_transition(
+                db, s.session_id, "EVALUATING", "COMPLETED", "ALL_TOPICS_EXHAUSTED", 0.0, 0
+            )
+            return {
+                "confidence_score": 0.0,
+                "reasoning": "All topics have been covered.",
+                "key_points_covered": [],
+                "missing_points": [],
+                "next_action": "COMPLETED",
+                "next_question": None,
+            }
+
+        # Get next question from new topic
+        s.state = "NEXT_TOPIC"
+        next_q = await get_next_question(session_id, db)
+        return {
+            "confidence_score": 0.0,
+            "reasoning": eval_result["reasoning"],
+            "key_points_covered": [],
+            "missing_points": [],
+            "next_action": "NEXT_TOPIC",
+            "next_question": next_q,
+        }
 
     if _is_end_interview_intent(answer_text):
         eval_result = {

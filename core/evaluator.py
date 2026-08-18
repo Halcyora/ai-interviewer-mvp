@@ -36,7 +36,7 @@ async def evaluate_answer(
             session_id=session_id,
             turn_id=turn_id,
             template_id="EVALUATOR",
-            model_id=settings.bedrock_claude_haiku_model_id,
+            model_id=settings.bedrock_nova_lite_model_id,
             temperature=0.0,
             max_tokens=256,
             rendered_prompt=rendered,

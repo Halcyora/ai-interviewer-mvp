@@ -12,7 +12,7 @@ from config.aws import get_bedrock_runtime
 async def test():
     client = get_bedrock_runtime()
     
-    print(f'Testing: {settings.bedrock_nova_pro_model_id}')
+    print(f'Testing Nova Pro: {settings.bedrock_nova_pro_model_id}')
     print()
     
     body = json.dumps({
