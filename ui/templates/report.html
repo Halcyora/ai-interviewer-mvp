@@ -56,6 +56,13 @@
   <script>
     const sessionId = "{{ session_id }}";
 
+    function formatUsd(cost) {
+      const value = Number(cost) || 0;
+      if (value === 0) return "$0.00";
+      if (value < 0.01) return `$${value.toFixed(6)}`;
+      return `$${value.toFixed(2)}`;
+    }
+
     async function readErrorDetail(res) {
       try {
         const payload = await res.json();
@@ -97,7 +104,7 @@
       const r = await res.json();
       document.getElementById("overall-grade").textContent = r.overall_grade || "—";
       document.getElementById("overall-score").textContent = `${Math.round(r.overall_score * 100)}%`;
-      document.getElementById("total-cost").textContent = `$${(r.total_cost_usd || 0).toFixed(2)}`;
+      document.getElementById("total-cost").textContent = formatUsd(r.total_cost_usd);
       document.getElementById("narrative").textContent = r.narrative;
       document.getElementById("strengths-list").innerHTML =
         r.strengths && r.strengths.length > 0 

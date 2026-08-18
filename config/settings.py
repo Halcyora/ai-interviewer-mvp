@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     follow_up_threshold_high: float = 0.8
     # Max stretch count: 1 (seed) + 2 (follow-ups) = 3 total attempts per topic
     max_stretch_count: int = 3
-    audio_silence_timeout_sec: float = 2.0
+    audio_silence_timeout_sec: float = 5.0
     log_level: str = "INFO"
 
 
