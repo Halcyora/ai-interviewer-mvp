@@ -18,8 +18,10 @@ async def generate_report(session_id: str, orchestrator_state, db) -> dict:
     grade = score_data["overall_grade"]
     
     cost = compute_cost_usd(
-        s.haiku_input_tokens, s.haiku_output_tokens,
-        s.sonnet_input_tokens, s.sonnet_output_tokens,
+        getattr(s, "haiku_input_tokens", 0),
+        getattr(s, "haiku_output_tokens", 0),
+        getattr(s, "sonnet_input_tokens", 0),
+        getattr(s, "sonnet_output_tokens", 0),
     )
 
     summary = {

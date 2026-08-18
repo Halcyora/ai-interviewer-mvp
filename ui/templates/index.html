@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Interviewer</title>
+  <meta name="description" content="AI-powered technical interview platform">
+  <title>AI Interviewer — Practice & Improve</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <div id="app">
     <header>
-      <h1>AI Interviewer</h1>
+      <h1>🚀 AI Interviewer</h1>
       <div id="header-right">
         <div id="progress-container">
           <div id="progress-bar"><div id="progress-fill"></div></div>
           <span id="progress-label">0 / 0 topics</span>
         </div>
         <div id="timer-container" hidden>
+          <span>⏱️</span>
           <span id="interview-timer">10:00</span>
         </div>
-        <a href="/admin" class="admin-link">&#9881; Admin</a>
+        <a href="/admin" class="admin-link">⚙️ Admin</a>
       </div>
     </header>
 
@@ -29,24 +31,27 @@
       </div>
 
       <section id="question-section">
-        <p id="question-text">Select a context below and press <strong>Start Interview</strong>.</p>
+        <p id="question-text">📋 Select a context below and press <strong>Start Interview</strong> to begin.</p>
       </section>
 
       <section id="answer-section" hidden>
-        <textarea id="text-answer" rows="6" placeholder="Type your answer here..."></textarea>
+        <label for="text-answer" style="display: block; margin-bottom: 0.5rem; font-size: 0.95rem;">💬 Your Answer</label>
+        <textarea id="text-answer" rows="6" placeholder="Type your detailed answer here..."></textarea>
+        
         <div id="audio-row">
-          <button id="mic-btn" class="btn-secondary">&#127908; Hold to Speak</button>
+          <button id="mic-btn" class="btn-secondary">🎤 Hold to Speak</button>
           <span id="live-transcript"></span>
         </div>
+        
         <div id="answer-actions">
-          <button id="submit-btn" class="btn-primary">Submit Answer</button>
-          <button id="leave-btn" class="btn-secondary" type="button">Leave Interview</button>
+          <button id="submit-btn" class="btn-primary">✓ Submit Answer</button>
+          <button id="leave-btn" class="btn-secondary" type="button">↪ Leave Interview</button>
         </div>
       </section>
 
       <section id="feedback-section" hidden>
         <div id="score-bar-wrapper">
-          <span>Confidence:</span>
+          <span>📊 Confidence:</span>
           <div id="score-bar"><div id="score-fill"></div></div>
           <span id="score-pct">0%</span>
         </div>
@@ -57,13 +62,13 @@
     <footer>
       <div id="start-row">
         <select id="context-select" class="context-select">
-          <option value="">Loading contexts...</option>
+          <option value="">📚 Select a company context...</option>
         </select>
         <select id="difficulty-select" class="context-select">
-          <option value="">Any difficulty</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
+          <option value="">🎯 Any difficulty</option>
+          <option value="beginner">🟢 Beginner</option>
+          <option value="intermediate">🟡 Intermediate</option>
+          <option value="advanced">🔴 Advanced</option>
         </select>
         <button id="start-btn" class="btn-primary">Start Interview</button>
       </div>

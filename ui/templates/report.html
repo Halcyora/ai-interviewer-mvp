@@ -3,38 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interview Report</title>
+  <title>Interview Report — AI Interviewer</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <div id="app">
     <header>
-      <h1>Interview Report</h1>
+      <h1>📊 Interview Report</h1>
+      <a href="/" class="admin-link">← Back Home</a>
     </header>
 
     <div id="overall-card">
-      <span id="overall-grade"></span>
-      <span id="overall-score"></span>
-      <span id="total-cost"></span>
+      <div>
+        <span style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Grade</span>
+        <span id="overall-grade">—</span>
+      </div>
+      <div>
+        <span style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Overall Score</span>
+        <span id="overall-score">—</span>
+      </div>
+      <div>
+        <span style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Est. Cost</span>
+        <span id="total-cost">—</span>
+      </div>
     </div>
 
     <section id="narrative-section">
-      <h2>Assessment</h2>
-      <p id="narrative"></p>
+      <h2>📝 Assessment Summary</h2>
+      <p id="narrative" style="color: var(--text-secondary); line-height: 1.8;">Loading report...</p>
     </section>
 
     <section id="strengths-section">
-      <h2>Strengths</h2>
-      <ul id="strengths-list"></ul>
+      <h2>✨ Strengths</h2>
+      <ul id="strengths-list">
+        <li style="color: var(--text-muted);">Loading...</li>
+      </ul>
     </section>
 
     <section id="gaps-section">
-      <h2>Areas for Improvement</h2>
-      <ul id="gaps-list"></ul>
+      <h2>🎯 Areas for Improvement</h2>
+      <ul id="gaps-list">
+        <li style="color: var(--text-muted);">Loading...</li>
+      </ul>
     </section>
 
     <section id="topics-section">
-      <h2>Topic Breakdown</h2>
+      <h2>📈 Topic Breakdown</h2>
       <div id="topics-grid"></div>
     </section>
   </div>
@@ -42,30 +56,55 @@
   <script>
     const sessionId = "{{ session_id }}";
 
+    async function readErrorDetail(res) {
+      try {
+        const payload = await res.json();
+        if (payload && typeof payload.detail === "string" && payload.detail.trim()) {
+          return payload.detail;
+        }
+      } catch (_) {
+        // Ignore JSON parse errors and use a fallback message.
+      }
+      return "Unknown error";
+    }
+
     async function loadReport() {
-      // Trigger generation if not done yet; ignore 400 if already generated
-      await fetch(`/reports/generate/${sessionId}`, { method: "POST" }).catch(() => {});
+      // Try to generate on first load if possible. Existing reports are returned as-is.
+      const generateRes = await fetch(`/reports/generate/${sessionId}`, { method: "POST" }).catch(() => null);
+      if (generateRes && !generateRes.ok && generateRes.status !== 400) {
+        const detail = await readErrorDetail(generateRes);
+        document.getElementById("narrative").textContent = `Report generation failed: ${detail}`;
+      }
+
       const res = await fetch(`/reports/${sessionId}`);
       if (!res.ok) {
-        document.getElementById("narrative").textContent = "Report not available yet.";
+        const detail = await readErrorDetail(res);
+        document.getElementById("narrative").textContent = `Report not available yet. ${detail}`;
         return;
       }
       const r = await res.json();
-      document.getElementById("overall-grade").textContent = `Grade: ${r.overall_grade}`;
-      document.getElementById("overall-score").textContent = `Score: ${Math.round(r.overall_score * 100)}%`;
-      document.getElementById("total-cost").textContent = `Est. cost: $${r.total_cost_usd}`;
+      document.getElementById("overall-grade").textContent = r.overall_grade || "—";
+      document.getElementById("overall-score").textContent = `${Math.round(r.overall_score * 100)}%`;
+      document.getElementById("total-cost").textContent = `$${(r.total_cost_usd || 0).toFixed(2)}`;
       document.getElementById("narrative").textContent = r.narrative;
       document.getElementById("strengths-list").innerHTML =
-        r.strengths.map(s => `<li>${s}</li>`).join("");
+        r.strengths && r.strengths.length > 0 
+          ? r.strengths.map(s => `<li>${s}</li>`).join("")
+          : "<li style='color: var(--text-muted);'>No strengths data available.</li>";
       document.getElementById("gaps-list").innerHTML =
-        r.gaps.map(g => `<li>${g}</li>`).join("");
-      document.getElementById("topics-grid").innerHTML = r.topic_breakdown.map(t =>
-        `<div class="topic-card">
-          <strong>${t.topic_label}</strong>
-          <span>${Math.round(t.avg_score * 100)}% (${t.grade})</span>
-          <small>${t.num_questions} question(s)</small>
-        </div>`
-      ).join("");
+        r.gaps && r.gaps.length > 0
+          ? r.gaps.map(g => `<li>${g}</li>`).join("")
+          : "<li style='color: var(--text-muted);'>No improvement areas identified.</li>";
+      document.getElementById("topics-grid").innerHTML = 
+        r.topic_breakdown && r.topic_breakdown.length > 0
+          ? r.topic_breakdown.map(t =>
+              `<div class="topic-card">
+                <strong>${t.topic_label || 'Unknown'}</strong>
+                <span>${Math.round(t.avg_score * 100)}%</span>
+                <small>${t.grade || '—'} • ${t.num_questions || 0} question(s)</small>
+              </div>`
+            ).join("")
+          : "<p style='grid-column: 1/-1; color: var(--text-muted);'>No topic data available.</p>";
     }
 
     loadReport();

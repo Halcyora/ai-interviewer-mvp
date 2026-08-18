@@ -14,6 +14,74 @@ const $ = id => document.getElementById(id);
 
 const REQUEST_TIMEOUT_MS = 20000;
 
+// ── UI Enhancement Functions ──────────────────────────────────────────────
+
+// Show a subtle toast notification
+function showNotification(message, type = "info", duration = 3000) {
+  const notification = document.createElement("div");
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    background: ${
+      type === "success" ? "#10b981" : 
+      type === "error" ? "#ef4444" : 
+      "#3b82f6"
+    };
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+    z-index: 10000;
+    font-size: 0.95rem;
+    max-width: 400px;
+  `;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.animation = "slideOut 0.3s ease-in forwards";
+    setTimeout(() => notification.remove(), 300);
+  }, duration);
+}
+
+// Add animations to the document
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideOut {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(20px); }
+  }
+`;
+document.head.appendChild(style);
+
+// Set loading state on buttons
+function setButtonLoading(button, isLoading) {
+  if (isLoading) {
+    button.disabled = true;
+    button.dataset.originalText = button.textContent;
+    button.textContent = "⏳ Loading...";
+    button.style.opacity = "0.6";
+  } else {
+    button.disabled = false;
+    button.textContent = button.dataset.originalText || "Submit";
+    button.style.opacity = "1";
+  }
+}
+
+function setTimerVisible(visible) {
+  const timerContainer = $("timer-container");
+  if (!timerContainer) return;
+  timerContainer.hidden = !visible;
+}
+
+
 async function fetchWithTimeout(url, options = {}, timeoutMs = REQUEST_TIMEOUT_MS) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
@@ -71,8 +139,18 @@ async function recoverSession() {
     $("start-btn").hidden = true;
     $("context-select").hidden = true;
     $("difficulty-select").hidden = true;
+    setTimerVisible(true);
     setInterviewActive(true, status.difficulty || "");
-    updateProgress(status.current_topic_index, status.total_topics);
+    totalTopics = status.total_topics || totalTopics || 0;
+    const completedQuestions = Math.max(0, status.global_turn_index || 0);
+    const currentQuestionNumber = Math.min(totalTopics || completedQuestions, completedQuestions + 1);
+    updateProgress(currentQuestionNumber, totalTopics);
+    
+    // Start 10-minute timer (resumed)
+    interviewStartTime = Date.now();
+    if (interviewTimerInterval) clearInterval(interviewTimerInterval);
+    interviewTimerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
     
     // Fetch and display current question
     // Note: For simplicity, show status; ideally fetch next question from backend
@@ -131,7 +209,7 @@ function resetToMainPage() {
   $("start-btn").disabled = false;
   $("context-select").hidden = false;
   $("difficulty-select").hidden = false;
-  $("timer-container").hidden = true;
+  setTimerVisible(false);
 
   $("text-answer").value = "";
   $("live-transcript").textContent = "";
@@ -150,21 +228,29 @@ function resetToMainPage() {
 async function startInterview() {
   const contextName = $("context-select").value;
   const difficulty = $("difficulty-select").value;
-  if (!contextName) { alert("Please select a context."); return; }
-  $("start-btn").disabled = true;
+  if (!contextName) { 
+    showNotification("📌 Please select a company context first.", "error");
+    return; 
+  }
+  
+  setButtonLoading($("start-btn"), true);
+  showNotification("🚀 Starting interview...", "info", 1500);
+  
   const res = await fetch("/interview/start", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ context_name: contextName, difficulty: difficulty || null }),
   });
+  
   if (!res.ok) {
-    alert("Failed to start interview. Is the context ingested and questions file present?");
-    $("start-btn").disabled = false;
+    setButtonLoading($("start-btn"), false);
+    showNotification("❌ Failed to start interview. Check if context is set up.", "error", 4000);
     return;
   }
+  
   const data = await res.json();
   sessionId = data.session_id;
-  totalTopics = data.first_question.total_topics;
+  totalTopics = data.total_questions || data.first_question.total_topics || 0;
   setInterviewActive(true, difficulty || "");
   
   // Save to localStorage for recovery on refresh (C4)
@@ -176,15 +262,17 @@ async function startInterview() {
   $("start-btn").hidden = true;
   $("context-select").hidden = true;
   $("difficulty-select").hidden = true;
-  $("timer-container").hidden = false;
+  setTimerVisible(true);
   
   // Start 10-minute timer
   interviewStartTime = Date.now();
   if (interviewTimerInterval) clearInterval(interviewTimerInterval);
   interviewTimerInterval = setInterval(updateTimer, 1000);
   updateTimer();
-    displayQuestion(data.first_question);
-  updateProgress(0, data.first_question.total_topics);
+  displayQuestion(data.first_question);
+  updateProgress(Math.max(1, (data.first_question.turn_index || 0) + 1), totalTopics);
+  
+  showNotification("✨ Interview started! Good luck!", "success", 2000);
 }
 
 function displayQuestion(q) {
@@ -197,12 +285,18 @@ function displayQuestion(q) {
   $("text-answer").value = "";
   $("live-transcript").textContent = "";
   $("submit-btn").disabled = false;
+
+  // Keep progress in sync even when the next question comes from a follow-up path.
+  const questionNumber = Math.max(1, (q.turn_index || 0) + 1);
+  updateProgress(questionNumber, totalTopics || q.total_topics || 0);
 }
 
 function updateProgress(done, total) {
-  const pct = total > 0 ? (done / total) * 100 : 0;
+  const safeTotal = Math.max(0, total || 0);
+  const safeDone = Math.max(0, Math.min(done || 0, safeTotal || done || 0));
+  const pct = safeTotal > 0 ? (safeDone / safeTotal) * 100 : 0;
   $("progress-fill").style.width = pct + "%";
-  $("progress-label").textContent = `${done} / ${total} topics`;
+  $("progress-label").textContent = `${safeDone} / ${safeTotal} topics`;
 }
 
 function updateTimer() {
@@ -228,10 +322,16 @@ function updateTimer() {
 
 async function submitTextAnswer() {
   const answer = $("text-answer").value.trim();
-  if (!answer) return;
+  if (!answer) { 
+    showNotification("📝 Please write an answer before submitting.", "error");
+    return; 
+  }
+  
   const requestSessionId = sessionId;
   const requestToken = ++submitRequestToken;
-  $("submit-btn").disabled = true;
+  setButtonLoading($("submit-btn"), true);
+  showNotification("🔄 Evaluating your answer...", "info", 2000);
+  
   try {
     const res = await fetchWithTimeout("/interview/answer", {
       method: "POST",
@@ -246,7 +346,7 @@ async function submitTextAnswer() {
 
     if (!res.ok) {
       const message = await parseErrorMessage(res, "Failed to submit answer");
-      alert(`Error: ${message}`);
+      showNotification(`❌ Error: ${message}`, "error", 4000);
       return;
     }
 
@@ -257,20 +357,23 @@ async function submitTextAnswer() {
     handleEvalResult(data);
   } catch (e) {
     if (e && e.name === "AbortError") {
-      alert("Submit timed out. Please try again.");
+      showNotification("⏱️ Request timed out. Please try again.", "error", 3000);
     } else {
       console.error("Submit answer request failed:", e);
-      alert("Submit failed due to a network or server error.");
+      showNotification("❌ Network error. Please try again.", "error", 3000);
     }
   } finally {
     // If interview is still active, allow retry; completed flow keeps controls hidden.
     if (requestToken === submitRequestToken && sessionId) {
-      $("submit-btn").disabled = false;
+      setButtonLoading($("submit-btn"), false);
     }
   }
 }
 
 function handleEvalResult(data) {
+  // Capture sessionId immediately before any state changes
+  const completionSessionId = sessionId;
+  
   const pct = Math.round(data.confidence_score * 100);
   $("score-pct").textContent = pct + "%";
   $("score-fill").style.width = pct + "%";
@@ -283,52 +386,59 @@ function handleEvalResult(data) {
     setInterviewActive(false);
     $("answer-section").hidden = true;
     $("leave-btn").hidden = true;
+    setTimerVisible(false);
     if (interviewTimerInterval) {
       clearInterval(interviewTimerInterval);
       interviewTimerInterval = null;
     }
     localStorage.removeItem("interviewSessionId");
-    setTimeout(() => { window.location.href = `/report/${sessionId}`; }, 2000);
+    // Use captured completionSessionId instead of global sessionId
+    setTimeout(() => { window.location.href = `/report/${completionSessionId}`; }, 2000);
   } else if (data.next_question) {
     currentTurnIndex = data.next_question.turn_index;
-    // Update progress bar with new question index
-    updateProgress(data.next_question.turn_index, totalTopics);
+    // Update progress bar - show which question we're on (1-indexed for user display)
+    updateProgress(data.next_question.turn_index + 1, totalTopics);
     setTimeout(() => displayQuestion(data.next_question), 1500);
   }
 }
 
 async function leaveInterview() {
-  if (!sessionId) {
+  const reportSessionId = sessionId;
+  if (!reportSessionId) {
     resetToMainPage();
     return;
   }
 
   // Show confirmation modal
-  const confirmed = confirm("End interview? You'll see your feedback report.");
+  const confirmed = confirm("🛑 End interview? You'll see your feedback report on the next page.");
   if (!confirmed) {
     return;
   }
 
   $("leave-btn").disabled = true;
+  showNotification("🔄 Ending interview...", "info", 1500);
+  
   try {
-    const res = await fetchWithTimeout(`/interview/leave/${sessionId}`, { method: "POST" });
+    const res = await fetchWithTimeout(`/interview/leave/${reportSessionId}`, { method: "POST" });
     if (!res.ok && res.status !== 404) {
       const message = await parseErrorMessage(res, "unknown error");
-      alert(`Failed to leave interview: ${message}`);
+      showNotification(`❌ Failed to leave: ${message}`, "error", 3000);
       $("leave-btn").disabled = false;
       return;
     }
   } catch (e) {
     if (e && e.name === "AbortError") {
-      alert("Leave request timed out. Redirecting to report.");
+      showNotification("⏱️ Request timed out. Redirecting to report...", "error", 2000);
     } else {
       console.error("Leave interview request failed:", e);
+      showNotification("❌ Error ending interview. Redirecting...", "error", 2000);
     }
   }
 
   // Redirect to report page
   resetToMainPage();
-  setTimeout(() => { window.location.href = `/report/${sessionId}`; }, 500);
+  showNotification("📊 Loading your report...", "info", 1000);
+  setTimeout(() => { window.location.href = `/report/${reportSessionId}`; }, 800);
 }
 
 function startAudioCapture() {

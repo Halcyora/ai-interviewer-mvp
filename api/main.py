@@ -1,8 +1,9 @@
 from contextlib import asynccontextmanager
 import logging
+from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from db.database import init_db
 from rag.vectorstore import warmup
 from config.settings import settings
@@ -63,7 +64,11 @@ async def admin_page(request: Request):
 
 @app.get("/report/{session_id}")
 async def report_page(request: Request, session_id: str):
-    return FileResponse("ui/templates/report.html", media_type="text/html")
+    # Read the template and inject session_id
+    template_path = Path("ui/templates/report.html")
+    html_content = template_path.read_text(encoding="utf-8")
+    html_content = html_content.replace("{{ session_id }}", session_id)
+    return HTMLResponse(content=html_content)
 
 
 if __name__ == "__main__":

@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — AI Interviewer</title>
+  <title>Admin Panel — AI Interviewer</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <div id="app">
     <header>
-      <h1>&#9881; Admin Panel</h1>
-      <a href="/" class="admin-link">&#8592; Back to Interview</a>
+      <h1>⚙️ Admin Panel</h1>
+      <a href="/" class="admin-link">← Back to Interview</a>
     </header>
 
     <!-- ── Existing Contexts ───────────────────────────────────── -->
     <section id="contexts-section">
-      <h2>Ingested Contexts</h2>
-      <div id="contexts-list"><p class="muted">Loading...</p></div>
+      <h2>📚 Ingested Contexts</h2>
+      <p class="muted">Manage your company documents and knowledge bases here.</p>
+      <div id="contexts-list"><p class="muted">Loading contexts...</p></div>
     </section>
 
     <!-- ── Upload Document ────────────────────────────────────── -->
     <section>
-      <h2>Upload Context Document</h2>
-      <p class="muted">Supported: .pdf, .docx, .txt — will be chunked and embedded automatically.</p>
+      <h2>📤 Upload Context Document</h2>
+      <p class="muted">Add new company context to generate interview questions. Supported formats: PDF, DOCX, TXT</p>
       <div class="form-row">
         <input type="file" id="file-input" accept=".pdf,.docx,.txt">
         <button id="upload-btn" class="btn-primary" onclick="uploadFile()">Upload &amp; Ingest</button>
@@ -32,19 +33,21 @@
 
     <!-- ── Generate Questions ─────────────────────────────────── -->
     <section>
-      <h2>Generate Questions</h2>
-      <p class="muted">Select an ingested context — Claude Sonnet will read the chunks and write a questions file.</p>
+      <h2>✨ Generate Questions</h2>
+      <p class="muted">Select an ingested context. Claude will analyze the content and create interview questions across multiple difficulty levels and topics.</p>
       <div class="form-row">
         <select id="gen-context-select" class="context-select">
-          <option value="">Select context...</option>
+          <option value="">📖 Select a context...</option>
         </select>
-        <label for="num-topics">Topics:</label>
-        <input type="number" id="num-topics" value="5" min="1" max="20" style="width:60px">
+        <label for="num-topics" style="display: flex; align-items: center; gap: 0.5rem;">
+          <span>Topics:</span>
+          <input type="number" id="num-topics" value="5" min="1" max="20" style="width:70px">
+        </label>
         <button id="gen-btn" class="btn-primary" onclick="generateQuestions()">Generate</button>
       </div>
       <div id="gen-status" class="status-box" hidden></div>
       <div id="gen-results" hidden>
-        <h2>Generated Questions</h2>
+        <h2>✅ Generated Questions Preview</h2>
         <div id="topics-preview"></div>
       </div>
     </section>
